@@ -18,7 +18,7 @@
             <div class="nav-bar">
                 <div class="brand">
                     <a href="#hero">
-                        <h1><span>Y</span>assin <span>A</span>lam</h1>
+                        <h1><span>Y</span>assin <span>W</span>esslati</h1>
                     </a>
                 </div>
                 <div class="nav-list">
@@ -104,24 +104,26 @@
                 <h1 class="section-title">Recent <span>Projects</span></h1>
             </div>
             <div class="all-projects">
-                <div class="project-item">
+                <div class="project-item" id="rebirth-project" onclick="openModal('rebirthModal')" style="cursor:pointer;">
                     <div class="project-info">
-                        <h1>Interactive Quiz App</h1>
-                        <h2>Engaging Learning Experience</h2>
-                        <p>A dynamic quiz application that challenges users with interactive questions, real-time scoring, and engaging animations. Built with JavaScript, HTML, and CSS for a seamless user experience.</p>
+                        <h1>Rebirth to the World</h1>
+                        <h2>Award-Winning 2D Platformer</h2>
+                        <p>An award-winning 2D side-scrolling platformer game developed in C with SDL. Winner of Game Day 2024 and celebrated at Esprit's Digital Knights. Features multi-level adventure, dynamic combat, interactive storytelling, and Arduino controller support.</p>
                     </div>
                     <div class="project-img">
-                        <img src="./assets/images/quiz-app.avif" alt="Interactive Quiz App">
+                        <img src="./assets/images/rebirthed/rebirth_logo.png" alt="Rebirth to the World Logo" style="object-fit:contain; background:#222; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); padding:0.5rem;">
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-info">
-                        <h1>E-Commerce Website</h1>
-                        <h2>Seamless Online Shopping</h2>
-                        <p>A fully functional e-commerce platform with an intuitive UI, secure checkout, and product filtering options. Developed using React.js and Firebase for real-time updates and authentication.</p>
-                    </div>
-                    <div class="project-img">
-                        <img src="./assets/images/e-commerc-website" alt="E-Commerce Website">
+                    <div class="project-item" id="clansy-project" onclick="openModal('clansyModal')" style="cursor:pointer;">
+                        <div class="project-info">
+                            <h1>Clansy</h1>
+                            <h2>Smart Cleaning Management</h2>
+                            <p>Digital transformation of cleaning companies via IoT to automate task management, improve coordination with teams and clients, personalize services, and optimize operational efficiency with a sustainable approach. Built with Qt and C++ for robust desktop and IoT integration.</p>
+                        </div>
+                        <div class="project-img">
+                            <img src="./assets/images/cleansy/logo.png" alt="Clansy Logo" style="object-fit:contain; background:#222; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); padding:0.5rem;">
+                        </div>
                     </div>
                 </div>
                 <div class="project-item">
@@ -159,6 +161,94 @@
     </section>
     
     <!-- End Projects Section -->
+
+    <!-- Clansy Modal -->
+    <div id="clansyModal" class="modal">
+      <div class="modal-content modern-modal">
+        <span class="close" onclick="closeModal('clansyModal')">&times;</span>
+        <div class="modal-header" style="display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+          <img src="./assets/images/cleansy/logo.png" alt="Clansy Logo" style="max-width:110px; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); background:#fff; padding:0.5rem; margin-bottom:0.5rem;">
+          <h2 style="text-align:center; font-size:2.1rem; font-weight:700; letter-spacing:0.02em; margin:0;">Clansy</h2>
+          <p style="text-align:center; color:#f7c873; font-weight:700; font-size:1.1rem; margin:0;">Smart Cleaning Management Platform</p>
+        </div>
+        <div class="modal-body" style="margin-top:1.2rem;">
+          <p style="margin-bottom:1.2rem; font-size:1.08rem; line-height:1.7; color:#e0e0e0;">
+            <span style="display:block; font-size:1.13rem; color:#fff; font-weight:600; margin-bottom:0.3rem;">Project Overview</span>
+            Digital transformation of cleaning companies through IoT to automate task management, improve coordination with teams and clients, personalize services, and optimize operational efficiency while adopting a sustainable approach. Clansy leverages Qt and C++ for a robust desktop experience, IoT integration, and advanced analytics.
+          </p>
+          <div style="margin-bottom:1.2rem;">
+            <span style="display:block; font-size:1.08rem; color:#f7c873; font-weight:600; margin-bottom:0.2rem;">Event Poster</span>
+            <img src="./assets/images/cleansy/poster.png" alt="Clansy Poster" style="width:100%; border-radius:1.1rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); margin-bottom:0.5rem;">
+          </div>
+          <h3 style="margin-bottom:0.5rem; color:#fff; font-size:1.1rem;">Skills & Technologies</h3>
+          <div class="skills-grid">
+            <span>Qt Framework</span>
+            <span>C++</span>
+            <span>Arduino</span>
+            <span>SQL</span>
+            <span>RFID</span>
+            <span>QML</span>
+            <span>Charts & Analytics</span>
+            <span>QR Code/Barcode</span>
+            <span>Mapping Services</span>
+            <span>Serial Communication</span>
+            <span>PDF/Excel Export</span>
+            <span>Email/SMS</span>
+            <span>Fleet Management</span>
+            <span>IoT Integration</span>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href="https://github.com/madaradou/hoteliasmartweb" target="_blank" rel="noopener" style="display:inline-block; background:#f7c873; color:#181818; font-weight:600; padding:0.7em 1.6em; border-radius:8px; text-decoration:none; font-size:1.08rem; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rebirth Modal -->
+    <div id="rebirthModal" class="modal">
+      <div class="modal-content modern-modal">
+        <span class="close" onclick="closeModal('rebirthModal')">&times;</span>
+        <div class="modal-header" style="display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+          <img src="./assets/images/rebirthed/rebirth_logo.png" alt="Rebirth to the World Logo" style="max-width:110px; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); background:#fff; padding:0.5rem; margin-bottom:0.5rem;">
+          <h2 style="text-align:center; font-size:2.1rem; font-weight:700; letter-spacing:0.02em; margin:0;">Rebirth to the World</h2>
+          <p style="text-align:center; color:#f7c873; font-weight:700; font-size:1.1rem; margin:0;">Award-Winning Game Day 2024 &bull; Digital Knights Reveal</p>
+        </div>
+        <div class="modal-body" style="margin-top:1.2rem;">
+          <p style="margin-bottom:1.2rem; font-size:1.08rem; line-height:1.7; color:#e0e0e0;">
+            <span style="display:block; font-size:1.13rem; color:#fff; font-weight:600; margin-bottom:0.3rem;">Game Overview</span>
+            Rebirth to the World is a visually stunning 2D side-scrolling platformer game developed in C using SDL. The game won top honors at Game Day 2024 and was featured at Esprit's Digital Knights event. Dive into a multi-level adventure with dynamic combat, interactive storytelling, puzzle integration, and Arduino controller support. Experience a unique blend of classic platforming and modern gameplay mechanics, all wrapped in a captivating medieval fantasy world.
+          </p>
+          <div style="margin-bottom:1.2rem;">
+            <span style="display:block; font-size:1.08rem; color:#f7c873; font-weight:600; margin-bottom:0.2rem;">Event Poster</span>
+            <img src="./assets/images/rebirthed/rebirth_posterr.png" alt="Rebirth to the World Poster" style="width:100%; border-radius:1.1rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); margin-bottom:0.5rem;">
+          </div>
+          <h3 style="margin-bottom:0.5rem; color:#fff; font-size:1.1rem;">Skills & Technologies</h3>
+          <div class="skills-grid">
+            <span>C Language</span>
+            <span>SDL Framework</span>
+            <span>Game Development</span>
+            <span>Graphics Programming</span>
+            <span>2D Animation</span>
+            <span>Physics Engine</span>
+            <span>Audio Programming</span>
+            <span>Arduino Integration</span>
+            <span>Collision Detection</span>
+            <span>Level Design</span>
+            <span>Character Animation</span>
+            <span>Combat System</span>
+            <span>Save System</span>
+            <span>Minimap System</span>
+          </div>
+          <h3 style="margin-top:1.5rem; color:#fff; font-size:1.1rem;">Project Demo</h3>
+          <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/G5VGV8nTPTQ" title="Rebirth to the World Trailer" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href="https://github.com/madaradou/rebirthed" target="_blank" rel="noopener" style="display:inline-block; background:#f7c873; color:#181818; font-weight:600; padding:0.7em 1.6em; border-radius:8px; text-decoration:none; font-size:1.08rem; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- About Section -->
     <section id="about">
@@ -246,6 +336,24 @@
     </section>
     <!-- End Footer -->
     <script src="./index.js"></script>
+    <script>
+      // Modal logic
+      function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      // Close modal on outside click
+      window.onclick = function(event) {
+        var modal = document.getElementById('rebirthModal');
+        if (event.target == modal) {
+          closeModal('rebirthModal');
+        }
+      }
+    </script>
     <script src="lightdarkmood.js"></script>
 </body>
 
