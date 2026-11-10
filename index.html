@@ -3,209 +3,471 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yassin Wesslati — Engineering Student & Developer</title>
-  <meta name="description" content="Portfolio of Yassin Wesslati — engineering student and freelance developer. Award-winning game dev, IoT systems and web.">
+  <title>Yassin Wesslati — Engineering Student, XR & Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Yassin Wesslati — engineering student at ESPRIT building XR training simulators, award-winning games, IoT and smart-agriculture platforms.">
   <link rel="shortcut icon" href="./assets/images/img-2.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="is-loading">
 
   <!-- Preloader -->
   <div id="loader" aria-hidden="true">
-    <div class="loader-orbit"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="loader-name">WESSLATI</div>
+    <div class="loader-orbit"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="loader-name">YASSIN<i>•</i></div>
     <div class="loader-count"><span id="loader-num">0</span>%</div>
   </div>
 
-  <!-- Cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-
-  <!-- Scroll progress -->
+  <div class="cursor-ring" aria-hidden="true"><span></span></div>
   <div id="progress" aria-hidden="true"></div>
 
-  <!-- Nav -->
-  <header id="nav">
-    <a href="#hero" class="brand">Y<em>.</em>W</a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Journey</a>
-      <a href="#works">Works</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
+  <!-- ============ HEADER ============ -->
+  <header id="top">
+    <a href="#home" class="wordmark">YASSIN<span class="wm-dot"></span></a>
+    <nav class="pill nav-pill" aria-label="Sections">
+      <a href="#home" class="active">HOME</a>
+      <a href="#about">ABOUT ME</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#xr">XR LAB</a>
+      <a href="#services">SERVICES</a>
     </nav>
-    <a href="#contact" class="nav-cta magnetic">Let's talk <span class="dot-live"></span></a>
-    <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    <div class="pill socials">
+      <a href="https://www.linkedin.com/in/yassin-wesslati-967324371" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+      <a href="https://github.com/madaradou" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12.02C22 6.48 17.52 2 12 2z"/></svg></a>
+      <a href="mailto:wesslatiyassine@gmail.com" title="Email" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
   </header>
-  <div id="drawer">
-    <a href="#about">About</a><a href="#experience">Journey</a><a href="#works">Works</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+
+  <!-- floating mini nav once you scroll -->
+  <nav id="float-nav" class="pill" aria-hidden="true">
+    <a href="#home">●</a><a href="#about">ABOUT</a><a href="#experience">EXP</a><a href="#projects">WORK</a><a href="#xr">XR</a><a href="#contact">TALK</a>
+  </nav>
+
+  <div id="drawer" aria-hidden="true">
+    <div class="drawer-card">
+      <div class="drawer-top"><span class="wordmark">YASSIN<span class="wm-dot"></span></span><button class="drawer-close" aria-label="Close menu">✕</button></div>
+      <nav>
+        <a href="#home">HOME</a><a href="#about">ABOUT ME</a><a href="#experience">EXPERIENCE</a><a href="#projects">PROJECTS</a><a href="#xr">XR LAB</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a>
+      </nav>
+      <div class="drawer-foot"><small>YASSIN WESSLATI</small><p>Engineering student · XR & full-stack developer</p></div>
+    </div>
   </div>
 
-  <main>
-    <!-- Hero -->
-    <section id="hero">
-      <div class="hero-meta reveal">
-        <span>Engineering Student</span><span class="sep">●</span><span>Freelance Developer</span><span class="sep">●</span><span>Tunisia</span>
-      </div>
-      <h1 class="hero-title">
-        <span class="line"><span class="split">YASSIN</span></span>
-        <span class="line"><span class="split metallic">WESSLATI</span></span>
-      </h1>
-      <div class="hero-portrait">
-        <img src="./assets/images/madaradouphoto.png" alt="Portrait of Yassin Wesslati">
-      </div>
-      <div class="hero-bottom">
-        <p class="hero-lede reveal">I build things you can <em>play</em>, <em>plug in</em> and <em>scroll</em> — from award-winning games in C to IoT platforms in Qt and the web.</p>
-        <div class="hero-actions reveal">
-          <a href="#works" class="btn btn-dark magnetic">See works <span>↓</span></a>
-          <a href="./assets/my-cv.pdf" download class="btn btn-line magnetic">Resume</a>
-        </div>
-        <div class="hero-badge reveal">
-          <span class="badge-num">01</span>
-          <span>Game Day 2024<br><b>Winner</b></span>
-        </div>
-      </div>
-    </section>
+  <!-- ============ HERO ============ -->
+  <main id="home">
+    <h1 class="hero-title" aria-label="Explore my portfolio">
+      <span class="line"><span class="split">EXPLORE MY</span></span>
+      <span class="line"><span class="split metallic">PORTFOLIO</span></span>
+    </h1>
 
-    <!-- Marquee -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>C / SDL</span><i>✦</i><span>Qt & C++</span><i>✦</i><span>Arduino</span><i>✦</i><span>IoT</span><i>✦</i><span>JavaScript</span><i>✦</i><span>Vue.js</span><i>✦</i><span>SQL</span><i>✦</i><span>Game Design</span><i>✦</i>
-        <span>C / SDL</span><i>✦</i><span>Qt & C++</span><i>✦</i><span>Arduino</span><i>✦</i><span>IoT</span><i>✦</i><span>JavaScript</span><i>✦</i><span>Vue.js</span><i>✦</i><span>SQL</span><i>✦</i><span>Game Design</span><i>✦</i>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <span class="kicker">ENGINEER — ESPRIT, TUNISIA</span>
+        <a href="#about" class="circle-btn magnetic" aria-label="Scroll to About">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 5l7 7m0 0-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="avail"><span class="dot-live"></span> OPEN TO INTERNSHIPS & FREELANCE</div>
+      </div>
+
+      <div class="hero-portrait" id="portrait">
+        <img src="./assets/images/hero-portrait.webp" alt="Yassin Wesslati" draggable="false">
+        <div class="portrait-tag t1">XR · UNITY 6</div>
+        <div class="portrait-tag t2">GAME DAY '24 — 2ND</div>
+        <div class="portrait-tag t3">IoT · AI · WEB</div>
+      </div>
+
+      <div class="hero-right">
+        <p class="pitch">I BUILD THINGS YOU CAN STEP INTO, PLAY, AND PLUG IN — FROM XR FIRE-SAFETY SIMULATORS TO SMART FARMS.</p>
+        <div class="disciplines">
+          <a href="#xr" data-svc="0">XR SIMULATION</a>
+          <a href="#services" data-svc="1">GAME DEVELOPMENT</a>
+          <a href="#services" data-svc="2">IoT & EMBEDDED</a>
+          <a href="#services" data-svc="3" class="on">FULL-STACK & MOBILE</a>
+        </div>
       </div>
     </div>
-
-    <!-- About: scroll-expand media -->
-    <section id="about">
-      <div class="sem">
-      <div class="sem-sticky">
-        <div class="sem-bg" style="background-image:url('./assets/images/hero-bg.jpg')"></div>
-        <div class="sem-media">
-          <img src="./assets/images/rebirthed/rebirth_posterr.png" alt="Rebirth to the World poster">
-        </div>
-        <div class="sem-titles">
-          <h2 class="sem-left">Build</h2>
-          <h2 class="sem-right">& Play</h2>
-        </div>
-        <p class="sem-hint">Scroll to expand ↓</p>
-      </div>
-      </div>
-      <div class="about-copy">
-        <p class="eyebrow reveal">(01) — About</p>
-        <p class="about-big reveal">I'm an <b>engineering student</b> and <b>freelance developer</b> who likes the space where software meets hardware. My team's 2D platformer <em>Rebirth to the World</em> took first place at <b>Game Day 2024</b>, and I've shipped IoT-connected desktop systems in Qt.</p>
-        <div class="stats">
-          <div class="stat reveal"><span class="count" data-to="5">0</span><small>Projects shipped</small></div>
-          <div class="stat reveal"><span class="count" data-to="1">0</span><small>Award won</small></div>
-          <div class="stat reveal"><span class="count" data-to="14">0</span><small>Tools in a single project</small></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience: horizontal scroll -->
-    <section id="experience">
-      <div class="exp-sticky">
-        <div class="exp-head">
-          <p class="eyebrow">(02) — Journey</p>
-          <div class="exp-bar"><span></span></div>
-        </div>
-        <div class="exp-track">
-          <article class="exp-panel">
-            <span class="exp-year">NOW</span>
-            <h3>Engineering Student</h3>
-            <p>Studying engineering while building real products — games, embedded systems and web apps — and freelancing on the side.</p>
-            <ul><li>Software engineering</li><li>Embedded & IoT</li><li>Freelance web</li></ul>
-          </article>
-          <article class="exp-panel">
-            <span class="exp-year">2024</span>
-            <h3>Game Day — 1st Place</h3>
-            <p><em>Rebirth to the World</em>, a 2D side-scrolling platformer written in C with SDL, won top honors at Game Day 2024.</p>
-            <ul><li>C / SDL</li><li>Physics & collisions</li><li>Arduino controller</li></ul>
-          </article>
-          <article class="exp-panel">
-            <span class="exp-year">2024</span>
-            <h3>Digital Knights</h3>
-            <p>The game was revealed and celebrated at Esprit's Digital Knights event — combat, storytelling, puzzles, save system and minimap.</p>
-            <ul><li>Level design</li><li>Character animation</li><li>Audio programming</li></ul>
-          </article>
-          <article class="exp-panel">
-            <span class="exp-year">IOT</span>
-            <h3>Clansy Platform</h3>
-            <p>Digital transformation for cleaning companies: task automation, RFID, fleet management and analytics, built in Qt & C++.</p>
-            <ul><li>Qt / QML</li><li>RFID & serial</li><li>Charts & export</li></ul>
-          </article>
-          <article class="exp-panel exp-next">
-            <span class="exp-year">NEXT</span>
-            <h3>Your project?</h3>
-            <p>Open to internships and freelance work.</p>
-            <a href="#contact" class="btn btn-light magnetic">Get in touch →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Works: 3D wheel -->
-    <section id="works">
-      <div class="works-head">
-        <p class="eyebrow reveal">(03) — Selected works</p>
-        <h2 class="section-title reveal">Spin the <em>reel</em></h2>
-        <p class="works-tip reveal">Drag, scroll or use ↑ ↓ — click a card to open</p>
-      </div>
-      <div class="wheel-wrap">
-        <div class="wheel" tabindex="0" aria-label="Projects wheel"></div>
-        <div class="wheel-info">
-          <span class="wheel-idx">01 / 05</span>
-          <h3 class="wheel-title"></h3>
-          <p class="wheel-sub"></p>
-          <button class="btn btn-dark magnetic wheel-open">Open project →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stack -->
-    <section id="stack">
-      <p class="eyebrow reveal">(04) — Stack</p>
-      <h2 class="section-title reveal">Tools I <em>reach for</em></h2>
-      <div class="stack-grid">
-        <div class="stack-card reveal"><h4>Languages</h4><p>C · C++ · JavaScript · SQL</p></div>
-        <div class="stack-card reveal"><h4>Frameworks</h4><p>SDL · Qt / QML · Vue.js</p></div>
-        <div class="stack-card reveal"><h4>Hardware</h4><p>Arduino · RFID · Serial comms</p></div>
-        <div class="stack-card reveal"><h4>Craft</h4><p>Game & level design · 2D animation · UI</p></div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <p class="eyebrow reveal">(05) — Contact</p>
-      <h2 class="contact-big reveal">Have an idea?<br><em>Let's build it.</em></h2>
-      <div class="contact-links">
-        <a class="contact-row magnetic" href="https://github.com/madaradou" target="_blank" rel="noopener"><span>GitHub</span><span>@madaradou ↗</span></a>
-        <a class="contact-row magnetic" href="./assets/my-cv.pdf" download><span>Resume</span><span>Download PDF ↓</span></a>
-        <!-- TODO: add your real email / LinkedIn here -->
-      </div>
-    </section>
   </main>
 
-  <footer id="footer">
-    <div class="footer-name">WESSLATI</div>
-    <div class="footer-row">
-      <span>© <span id="year"></span> Yassin Wesslati</span>
-      <a href="#hero">Back to top ↑</a>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>UNITY 6 · URP</span><i>✦</i><span>C#</span><i>✦</i><span>C / SDL</span><i>✦</i><span>QT & C++</span><i>✦</i><span>REACT</span><i>✦</i><span>NODE.JS</span><i>✦</i><span>FLUTTER</span><i>✦</i><span>ARDUINO</span><i>✦</i><span>PHP · SYMFONY</span><i>✦</i><span>PYTHON</span><i>✦</i>
+      <span>UNITY 6 · URP</span><i>✦</i><span>C#</span><i>✦</i><span>C / SDL</span><i>✦</i><span>QT & C++</span><i>✦</i><span>REACT</span><i>✦</i><span>NODE.JS</span><i>✦</i><span>FLUTTER</span><i>✦</i><span>ARDUINO</span><i>✦</i><span>PHP · SYMFONY</span><i>✦</i><span>PYTHON</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT (scroll-expand) ============ -->
+  <section id="about">
+    <div class="sem">
+      <div class="sem-sticky">
+        <div class="sem-bg"><img src="./assets/images/hero-bg.jpg" alt=""></div>
+        <div class="sem-card">
+          <img class="sem-img" src="./assets/images/hero-bg.jpg" alt="Late-night build session">
+          <img class="sem-blur" src="./assets/images/hero-bg.jpg" alt="" aria-hidden="true">
+          <div class="sem-shade"></div>
+          <div class="sem-content">
+            <div class="sem-head">
+              <h3>TURNING IDEAS INTO THINGS PEOPLE CAN PLAY, TRAIN IN AND RELY ON</h3>
+              <span class="mono">BASED IN TUNISIA • WORKING WORLDWIDE</span>
+            </div>
+            <div class="sem-empty"></div>
+            <div class="sem-foot">
+              <div>
+                <div class="sem-disc"><b>DISCIPLINE & CRAFT</b><i></i><span class="mono">XR • GAMES • IoT • FULL-STACK</span></div>
+                <p>I'M AN ENGINEERING STUDENT AT ESPRIT AND FOUNDER OF TACHE-LIK, AN EDUCATIONAL PLATFORM GUIDING ESPRIT STUDENTS. I WORK END-TO-END — FROM ARCHITECTURE TO DEPLOYMENT — ACROSS UNITY XR, GAMES IN C, QT DESKTOP + ARDUINO, AND REACT / FLUTTER APPS.</p>
+              </div>
+              <div class="sem-ctas">
+                <button class="btn-white" data-contact>GET IN TOUCH</button>
+                <a class="btn-ghost" href="./assets/my-cv.pdf" download>RESUME</a>
+              </div>
+            </div>
+          </div>
+          <div class="sem-sub">
+            <p class="sem-date">BACKGROUND & VISION</p>
+            <p class="sem-prompt">SCROLL TO EXPAND</p>
+          </div>
+        </div>
+        <div class="sem-titles">
+          <h2 class="sem-l">ABOUT</h2>
+          <h2 class="sem-r">ME</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE (horizontal) ============ -->
+  <section id="experience">
+    <div class="exp-sticky">
+      <div class="exp-grid-bg"></div>
+      <div class="exp-tickers" aria-hidden="true">
+        <div class="tk tk-top">XR DEVELOPER &nbsp; GAME DEVELOPER &nbsp; IoT ENGINEER &nbsp; FOUNDER &nbsp; XR DEVELOPER &nbsp; GAME DEVELOPER &nbsp;</div>
+        <div class="tk tk-bot">ESPRIT &nbsp; GAME DAY 2024 &nbsp; TUNISIE TELECOM &nbsp; TACHE-LIK &nbsp; ESPRIT &nbsp; GAME DAY 2024 &nbsp;</div>
+      </div>
+      <header class="exp-hud">
+        <span id="exp-phase">FOUNDATION & JOURNEY</span>
+        <div class="exp-meter"><span id="exp-meter"></span></div>
+      </header>
+
+      <div class="exp-stage-wrap">
+        <div class="exp-stage">
+          <div class="exp-panel intro" data-phase="FOUNDATION & JOURNEY">
+            <span class="chip">FOUNDATION & JOURNEY</span>
+            <h2>WHERE<br>I'VE BEEN</h2>
+            <p>From a C game that won on stage, to IoT desktop systems, to a Unity XR simulator that teaches people how to survive an electrical fire.</p>
+          </div>
+
+          <div class="exp-panel" data-phase="ENGINEERING · ESPRIT">
+            <div class="exp-bgdate">NOW</div>
+            <div class="exp-eyebrow"><span>PRESENT</span><i></i><b>ESPRIT — ENGINEERING</b></div>
+            <h3>ENGINEERING<br>STUDENT</h3>
+            <p>Studying engineering while shipping real products in teams: XR training, games, desktop + hardware and web platforms.</p>
+            <div class="exp-specs">
+              <div><small>XR</small>FireSafe XR — electrical-fire module in Unity 6</div>
+              <div><small>FULL-STACK</small>Hotelia Smart, Ess9ini, SurveyMaster</div>
+              <div><small>DESKTOP + IoT</small>Cleansy — Qt/C++ with Arduino RFID</div>
+            </div>
+          </div>
+
+          <div class="exp-panel" data-phase="COMPETITIONS · 2024">
+            <div class="exp-bgdate">2024</div>
+            <div class="exp-eyebrow"><span>2024</span><i></i><b>GAME DAY · BAL DES PROJETS</b><em>AWARDS</em></div>
+            <h3>2× SECOND<br>PLACE</h3>
+            <p><i>Rebirth to the World</i> — a 2D platformer in C / SDL with an Arduino controller — took 2nd place at Game Day 2024 and 2nd at ESPRIT's Bal des Projets 2024.</p>
+            <div class="exp-specs">
+              <div><small>ENGINE</small>C · SDL 1.2, custom physics & collisions</div>
+              <div><small>HARDWARE</small>Arduino game controller</div>
+              <div><small>SHOWCASE</small>Revealed at Digital Knights</div>
+            </div>
+          </div>
+
+          <div class="exp-panel" data-phase="TUNISIE TELECOM · INTERN">
+            <div class="exp-bgdate">TT</div>
+            <div class="exp-eyebrow"><span>INTERNSHIP</span><i></i><b>TUNISIE TELECOM</b></div>
+            <h3>TECHNICAL<br>INTERN</h3>
+            <p>Hands-on technical internship at Tunisia's national telecom operator, alongside Flutter work building high-performance mobile apps.</p>
+            <div class="exp-specs">
+              <div><small>ROLE</small>Technical intern</div>
+              <div><small>MOBILE</small>Flutter developer</div>
+              <div><small>ON THE SIDE</small>Freelance client projects</div>
+            </div>
+          </div>
+
+          <div class="exp-panel" data-phase="FOUNDER · TACHE-LIK">
+            <div class="exp-bgdate">LEAD</div>
+            <div class="exp-eyebrow"><span>FOUNDER</span><i></i><b>TACHE-LIK</b><em>EDTECH</em></div>
+            <h3>FOUNDER &<br>MENTOR</h3>
+            <p>Founded Tache-Lik, an educational platform guiding ESPRIT students — leading the full-stack build, technical strategy and AI-powered learning features.</p>
+            <div class="exp-specs">
+              <div><small>LEADERSHIP</small>Product & technical strategy</div>
+              <div><small>BUILD</small>Full-stack, real-time features</div>
+              <div><small>IMPACT</small>Mentoring ESPRIT students</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="exp-foot">
+        <button data-jump="0.22">ESPRIT</button>
+        <button data-jump="0.47">AWARDS</button>
+        <button data-jump="0.72">TELECOM</button>
+        <button data-jump="1">FOUNDER</button>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED (flex carousel) ============ -->
+  <section id="projects" class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title reveal">FEATURED PROJECTS</h2>
+      <p class="sec-note reveal">HOVER TO EXPAND · CLICK TO OPEN</p>
+    </div>
+    <div class="flex-carousel reveal" id="flex"></div>
+  </section>
+
+  <!-- ============ XR LAB ============ -->
+  <section id="xr">
+    <canvas id="embers" aria-hidden="true"></canvas>
+    <div class="xr-inner wrap">
+      <div class="xr-head">
+        <span class="chip chip-fire"><span class="rec"></span> XR LAB — CASE STUDY 01</span>
+        <h2 class="xr-title reveal">FIRESAFE <span class="xr-x">XR</span></h2>
+        <p class="xr-lede reveal">A first-person fire-safety <b>training simulator</b> built by a team of four in <b>Unity 6.3 LTS</b> — one scenario each. Mine is the <b>electrical fire</b>: a burning cabinet where the wrong extinguisher can kill you.</p>
+      </div>
+
+      <div class="xr-grid">
+        <!-- HUD mock -->
+        <div class="xr-hud reveal" id="xr-hud">
+          <div class="hud-top"><span>MODULE 04 — FEU D'ARMOIRE ÉLECTRIQUE</span><span class="mono">EXAMEN</span></div>
+          <div class="hud-center">
+            <svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><circle class="ring-fg" cx="60" cy="60" r="52"/></svg>
+            <div class="ring-label"><b id="ring-pct">0</b>%<small>MAINTENIR [E]</small></div>
+          </div>
+          <div class="hud-warn" id="hud-warn">⚠ EXTINCTEUR VIDE — PRENEZ UN AUTRE ! <span>(1 foyer restant)</span></div>
+          <div class="hud-keys"><kbd>E</kbd> ÉTEINDRE <kbd>R</kbd> GOUPILLE <kbd>F</kbd> INSPECTER <kbd>G</kbd> LÂCHER</div>
+        </div>
+
+        <!-- Extinguisher decision -->
+        <div class="xr-ext reveal">
+          <h4>PICK THE RIGHT EXTINGUISHER</h4>
+          <p class="mono dim">Live electrical cabinet. Choose:</p>
+          <div class="ext-btns">
+            <button data-ext="water">WATER</button>
+            <button data-ext="foam">FOAM</button>
+            <button data-ext="co2">CO₂</button>
+            <button data-ext="powder">POWDER ABC</button>
+          </div>
+          <div class="ext-result" id="ext-result" aria-live="polite">Pull the pin [R] · aim at the base · sweep — 1–2 m.</div>
+        </div>
+      </div>
+
+      <!-- Scenario state machine -->
+      <div class="xr-flow reveal">
+        <h4>SCENARIO STATE MACHINE</h4>
+        <ol id="xr-states">
+          <li>BRIEFING</li><li>NORMAL</li><li>EARLY WARNING<small>sparks · buzz · smoke</small></li><li>INSPECTION<small>[F] identify hazard</small></li><li>IGNITION<small>alarm</small></li><li>POWER CUT<small>main breaker · lockout</small></li><li>EXTINGUISH<small>re-ignition check</small></li><li>SECURE<small>ventilate</small></li><li>DEBRIEF<small>score</small></li>
+        </ol>
+      </div>
+
+      <div class="xr-cols">
+        <div class="xr-card reveal">
+          <span class="num">01</span>
+          <h4>Module 3 — shipped</h4>
+          <p>First-person controller, pick-up / drop extinguishers with sway & recoil, hold-to-extinguish with sphere-cast + line-of-sight (no spraying through walls), one extinguisher per fire, NavMesh NPC that takes smoke damage, UI Toolkit menus and a one-click scene builder.</p>
+        </div>
+        <div class="xr-card reveal">
+          <span class="num">02</span>
+          <h4>Module 4 — electrical fire</h4>
+          <p>Fire stages that spread to the cable tray and re-ignite if the power is still on, a main-breaker power cut with emergency lighting, safety-decision scoring and a debrief, plus three difficulties: Facile, Normal, Examen.</p>
+        </div>
+        <div class="xr-card reveal">
+          <span class="num">03</span>
+          <h4>The panicking coworker</h4>
+          <p>An NPC runs at the fire with a <i>water</i> extinguisher. Stop him, hold [E] to calm him down, then guide him crouched through the smoke to the assembly point — with French voice lines, subtitles and heartbeat audio.</p>
+        </div>
+      </div>
+
+      <div class="chips xr-chips reveal">
+        <span>Unity 6.3 LTS</span><span>URP</span><span>C#</span><span>New Input System</span><span>UI Toolkit (UXML/USS)</span><span>AI Navigation</span><span>ScriptableObjects</span><span>Particle VFX</span><span>MCP for Unity</span><span>Keyboard · Gamepad · Touch</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESS9INI ============ -->
+  <section id="ess9ini" class="wrap">
+    <div class="ess">
+      <div class="ess-copy">
+        <span class="chip">CASE STUDY 02 — SMART AGRICULTURE</span>
+        <h2 class="sec-title reveal">ESS9INI <span class="ar" lang="ar">إسقيني</span></h2>
+        <p class="reveal">A smart-farm dashboard built for Tunisian agriculture — first for an olive farm in Gabès <span lang="ar">(مزرعة الزياتين، قابس)</span>. IoT soil sensors stream moisture, temperature and battery levels; an AI layer turns soil + weather into irrigation recommendations, in an <b>Arabic / English</b> interface farmers can use in the field.</p>
+        <ul class="ess-list reveal">
+          <li><b>Real-time monitoring</b> — 4 sensors, updates every 30 s, offline detection</li>
+          <li><b>AI irrigation</b> — weather-aware schedules for olive trees, date palms and cereals</li>
+          <li><b>Interactive farm map</b> — click a sensor, colour-coded by moisture</li>
+          <li><b>Alerts</b> — critical &lt; 30 %, warning 30–60 %, target 80 %</li>
+        </ul>
+        <div class="chips reveal"><span>React 18</span><span>Node.js</span><span>MongoDB</span><span>Flet</span><span>Arduino / IoT</span><span>REST + WebSocket</span></div>
+        <a class="btn-black magnetic reveal" href="https://github.com/madaradou/ess9ini" target="_blank" rel="noopener">VIEW ON GITHUB ↗</a>
+      </div>
+
+      <div class="ess-dash reveal" id="ess-dash">
+        <div class="dash-top"><img src="./assets/images/ess9ini/logo.png" alt="Ess9ini logo"><span class="mono">GABÈS · 12.5 ha · <span class="live">LIVE</span></span></div>
+        <div class="dash-map">
+          <svg viewBox="0 0 300 170" aria-label="Farm sensor map">
+            <rect x="6" y="6" width="288" height="158" rx="14" class="field"/>
+            <path d="M6 60 H294 M6 112 H294 M100 6 V164 M200 6 V164" class="rows"/>
+            <g class="sensor" data-s="0"><circle cx="58" cy="38" r="9"/><text x="58" y="42">1</text></g>
+            <g class="sensor" data-s="1"><circle cx="160" cy="86" r="9"/><text x="160" y="90">2</text></g>
+            <g class="sensor" data-s="2"><circle cx="246" cy="40" r="9"/><text x="246" y="44">3</text></g>
+            <g class="sensor" data-s="3"><circle cx="72" cy="136" r="9"/><text x="72" y="140">4</text></g>
+          </svg>
+        </div>
+        <div class="dash-row">
+          <div class="gauge">
+            <svg viewBox="0 0 120 70"><path d="M10 64 A50 50 0 0 1 110 64" class="g-bg"/><path d="M10 64 A50 50 0 0 1 110 64" class="g-fg" id="g-fg"/></svg>
+            <div class="g-val"><b id="g-val">0</b>%<small lang="ar">رطوبة التربة</small></div>
+          </div>
+          <div class="dash-info">
+            <small>SENSOR <b id="s-id">2</b></small>
+            <div id="s-status" class="badge warn">WARNING</div>
+            <p class="mono" id="s-rec">AI: irrigate at 05:30 — +35 % to target</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUPRAMAX ============ -->
+  <section id="supramax">
+    <div class="wrap">
+      <div class="sx-head">
+        <div>
+          <span class="chip chip-sun">CASE STUDY 03 — SOLAR ENERGY · CLIENT WORK</span>
+          <h2 class="sx-title reveal">SUPRAMAX<br><span class="sx-sun">ENERGY</span></h2>
+        </div>
+        <div class="sx-intro reveal">
+          <img src="./assets/images/supramax/logo.webp" alt="Supramax Energy logo">
+          <p>Supramax Energy is a Tunisian photovoltaic installer. I'm the lead contributor on both of its products: the public website that brings in clients, and an internal AI platform that turns a solar installation into a STEG-compliant technical dossier in minutes.</p>
+        </div>
+      </div>
+
+      <div class="sx-strip" aria-hidden="true">
+        <img src="./assets/images/supramax/roof-1.webp" alt="" loading="lazy">
+        <img src="./assets/images/supramax/roof-2.webp" alt="" loading="lazy">
+        <img src="./assets/images/supramax/inverter.webp" alt="" loading="lazy">
+        <img src="./assets/images/supramax/roof-3.webp" alt="" loading="lazy">
+      </div>
+
+      <div class="sx-grid">
+        <article class="sx-card reveal">
+          <div class="sx-shot"><img src="./assets/images/supramax/roof-1.webp" alt="Supramax rooftop installation" loading="lazy"><span class="sx-badge"><span class="dot-live"></span> LIVE · SUPRAMAXENERGY.TN</span></div>
+          <div class="sx-body">
+            <small>01 — PUBLIC WEBSITE · 29 COMMITS, TOP CONTRIBUTOR</small>
+            <h3>supramaxenergy.tn</h3>
+            <p>A trilingual (FR / EN / AR) React 19 site for residential, commercial and industrial solar. I built the server proxy that routes the contact form and the <b>“Chamouss” AI chatbot</b> (Gemini) through serverless functions, added fail-over timeouts so the bot stays fast, and set up server-side reCAPTCHA plus a client-side Web3Forms fallback. I also added the 93 kWp and 103 kWp projects to the gallery and handled the deployment.</p>
+            <div class="chips"><span>React 19</span><span>Vite</span><span>React Router</span><span>Leaflet map picker</span><span>Gemini chatbot</span><span>Netlify Functions</span><span>reCAPTCHA</span><span>i18n FR/EN/AR</span></div>
+            <div class="sx-links"><a class="btn-black" href="https://supramaxenergy.tn" target="_blank" rel="noopener">VISIT SITE ↗</a><a class="btn-line" href="https://github.com/supramaxorganistation/reactsupramaxsite" target="_blank" rel="noopener">CODE</a></div>
+          </div>
+        </article>
+
+        <article class="sx-card reveal">
+          <div class="sx-shot dark"><img src="./assets/images/supramax/dossier-deck.webp" alt="Supramax dossier platform presentation" loading="lazy"><span class="sx-badge">AI · STEG COMPLIANCE</span></div>
+          <div class="sx-body">
+            <small>02 — DOSSIER TECHNIQUE AI · 26 OF 30 COMMITS</small>
+            <h3>STEG dossiers in minutes</h3>
+            <p>A full-stack platform that generates the official <b>21-page STEG technical dossier</b> for a grid-connected PV installation. It handles sizing, NF C 15-100 checks and a ready-to-submit PDF with annexes and GPS data. I built an <b>AI datasheet scanner</b> that pulls panel, inverter, protection and cable specs out of PDFs. I also built a function-calling <b>dossier agent</b> (Qwen3-8B) that reads and edits the dossier, runs compliance and writes the French narrative text, falling back to a rule-based checklist when the AI is unavailable. On top of that I added ERP modules and an Expo mobile client.</p>
+            <div class="chips"><span>React + TS</span><span>Recharts</span><span>Node / Express</span><span>MongoDB</span><span>LLM agent · tool calling</span><span>PDF / DOCX generation</span><span>Expo · React Native</span></div>
+            <div class="sx-links"><button class="btn-black" data-open="supramax-dossier">OPEN CASE →</button><a class="btn-line" href="https://github.com/supramaxorganistation/supramaxenergydossiertechniqueai" target="_blank" rel="noopener">CODE</a></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="sx-stats">
+        <div class="reveal"><b>0,93</b><small>target inverter / PV ratio</small></div>
+        <div class="reveal"><b>100 %</b><small>STEG checks automated</small></div>
+        <div class="reveal"><b>21 p.</b><small>official dossier generated</small></div>
+        <div class="reveal"><b>3</b><small>languages on the public site</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKS WHEEL ============ -->
+  <section id="works" class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title reveal">ALL WORKS</h2>
+      <p class="sec-note reveal">DRAG · SCROLL · ↑ ↓ · CLICK TO OPEN</p>
+    </div>
+    <div class="wheel-wrap">
+      <div class="wheel" tabindex="0" aria-label="Projects wheel"></div>
+      <div class="wheel-info">
+        <span class="wheel-idx"></span>
+        <span class="wheel-cat"></span>
+        <h3 class="wheel-title"></h3>
+        <p class="wheel-sub"></p>
+        <button class="btn-black magnetic wheel-open">OPEN PROJECT →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="wrap">
+    <div class="svc-head">
+      <h2 class="sec-title reveal">WHAT I BUILD</h2>
+      <p class="sec-note reveal">FROM FIRST SKETCH TO DEPLOYED PRODUCT — SOFTWARE THAT TOUCHES THE REAL WORLD: HEADSETS, SENSORS, CONTROLLERS AND THE PEOPLE USING THEM.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc"><div class="svc-row"><span class="svc-n">1</span><span class="svc-t">XR & SIMULATION</span><span class="svc-i">→</span></div>
+        <div class="svc-body"><div><p>Unity training simulators with scenario state machines, physics interactions, NPC AI, VFX and multi-device input (keyboard, gamepad, touch).</p><div class="svc-foot"><span class="mono">UNITY · C# · URP · UI TOOLKIT</span><button data-contact="XR & Simulation">INQUIRE ↗</button></div></div></div></div>
+      <div class="svc"><div class="svc-row"><span class="svc-n">2</span><span class="svc-t">GAME DEVELOPMENT</span><span class="svc-i">→</span></div>
+        <div class="svc-body"><div><p>2D games from the engine up — physics, collisions, animation, combat, save systems, and custom hardware controllers.</p><div class="svc-foot"><span class="mono">C · SDL · ARDUINO</span><button data-contact="Game Development">INQUIRE ↗</button></div></div></div></div>
+      <div class="svc"><div class="svc-row"><span class="svc-n">3</span><span class="svc-t">IoT & EMBEDDED</span><span class="svc-i">→</span></div>
+        <div class="svc-body"><div><p>Sensors, RFID and serial links wired into dashboards and desktop apps — data you can act on.</p><div class="svc-foot"><span class="mono">ARDUINO · QT/C++ · RFID · SQL</span><button data-contact="IoT & Embedded">INQUIRE ↗</button></div></div></div></div>
+      <div class="svc active"><div class="svc-row"><span class="svc-n">4</span><span class="svc-t">FULL-STACK WEB & MOBILE</span><span class="svc-i">→</span></div>
+        <div class="svc-body"><div><p>Web and mobile platforms with real-time features and AI integration — React, Node, Symfony/PHP, Flutter.</p><div class="svc-foot"><span class="mono">REACT · NODE · PHP · FLUTTER · MONGODB · MYSQL</span><button data-contact="Full-Stack Web & Mobile">INQUIRE ↗</button></div></div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contact">
+    <div class="wrap foot-inner">
+      <h2 class="lets-talk" data-contact>LET'S TALK</h2>
+      <div class="foot-pills">
+        <a href="https://www.linkedin.com/in/yassin-wesslati-967324371" target="_blank" rel="noopener">LINKEDIN</a>
+        <a href="https://github.com/madaradou" target="_blank" rel="noopener">GITHUB</a>
+        <a href="https://www.facebook.com/yassin.wesslati.7" target="_blank" rel="noopener">FACEBOOK</a>
+        <a href="mailto:wesslatiyassine@gmail.com" class="copy-mail">WESSLATIYASSINE@GMAIL.COM</a>
+        <button class="btn-white" data-contact>CONTACT ME</button>
+      </div>
+      <div class="foot-name" aria-hidden="true">WESSLATI</div>
+      <div class="foot-bar"><span>© <span id="year"></span> PORTFOLIO. ALL RIGHTS RESERVED</span><span>DESIGN & CODE BY YASSIN WESSLATI</span></div>
     </div>
   </footer>
 
   <!-- Project modal -->
-  <div id="modal" aria-hidden="true">
+  <div id="modal" class="overlay" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
-      <button class="modal-close" aria-label="Close">✕</button>
-      <div class="modal-body"></div>
+      <div class="m-head"><span class="m-cat" id="m-cat"></span><h3 id="m-title"></h3><button class="x" data-close aria-label="Close">✕</button></div>
+      <div class="m-body"></div>
     </div>
   </div>
 
-  <div id="toast"></div>
+  <!-- Contact modal (opens the visitor's mail app — no backend) -->
+  <div id="contact-modal" class="overlay" aria-hidden="true">
+    <div class="modal-card small" role="dialog" aria-modal="true" aria-labelledby="c-title">
+      <div class="c-head"><div><small>START A CONVERSATION</small><h3 id="c-title">LET'S BUILD SOMETHING</h3></div><button class="x" data-close aria-label="Close">✕</button></div>
+      <form id="contact-form">
+        <label>YOUR NAME<input name="name" required placeholder="Jane Doe"></label>
+        <label>SUBJECT<select name="service"><option>XR & Simulation</option><option>Game Development</option><option>IoT & Embedded</option><option>Full-Stack Web & Mobile</option><option>Internship opportunity</option><option>Other</option></select></label>
+        <label>MESSAGE<textarea name="message" rows="4" required placeholder="Tell me about your project, goals and timeline…"></textarea></label>
+        <button type="submit" class="btn-black full">SEND MESSAGE</button>
+      </form>
+    </div>
+  </div>
 
+  <div id="toast" role="status"></div>
   <script src="./index.js"></script>
 </body>
 </html>

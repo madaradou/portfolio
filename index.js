@@ -2,87 +2,126 @@ const IMG = "./assets/images/";
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const clamp01 = (v) => Math.max(0, Math.min(1, v));
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-const projects = [
-  {
-    title: "Rebirth to the World",
-    sub: "Award-winning 2D platformer — Game Day 2024 winner",
-    tag: "Game · C / SDL · 2024",
-    cover: IMG + "rebirthed/rebirth_logo.png", contain: true,
-    desc: "A 2D side-scrolling platformer developed in C using SDL. It won top honors at Game Day 2024 and was featured at Esprit's Digital Knights event. A multi-level adventure with dynamic combat, interactive storytelling, puzzle integration and Arduino controller support — classic platforming in a medieval fantasy world.",
-    skills: ["C Language", "SDL Framework", "Game Development", "Graphics Programming", "2D Animation", "Physics Engine", "Audio Programming", "Arduino Integration", "Collision Detection", "Level Design", "Character Animation", "Combat System", "Save System", "Minimap System"],
-    media: [IMG + "rebirthed/rebirth_posterr.png"],
+/* ================= DATA ================= */
+const projects = {
+  firesafe: {
+    title: "FireSafe XR", cat: "XR SIMULATION · UNITY 6", art: "xr",
+    sub: "First-person fire-safety training simulator — I own the electrical-fire scenario.",
+    desc: "A team project of four students, one fire scenario each. Built in Unity 6.3 LTS with URP, the new Input System, UI Toolkit and AI Navigation. I shipped Module 3 (training fire: extinguisher physics, hold-to-extinguish with line-of-sight checks, NavMesh NPC, menus, one-click builder) and lead Module 4: an electrical cabinet fire where choosing water or foam means electrocution.",
+    hl: "Scenario state machine: Briefing → Early warning → Inspection → Ignition → Power cut → Extinguish → Secure → Debrief.",
+    list: ["Extinguisher types as ScriptableObjects — CO₂ correct, powder penalised, water/foam lethal", "Fire stages that spread to the cable tray and re-ignite if power is live", "Panicking coworker NPC with health, calming interaction and evacuation", "Keyboard / gamepad / touch with auto-switching and rebinding", "Three difficulties — Facile, Normal, Examen — with scoring and debrief"],
+    tags: ["Unity 6.3", "C#", "URP", "UI Toolkit", "NavMesh", "Input System", "Particle VFX"],
+    anchor: "#xr",
+  },
+  dossier: {
+    title: "Supramax Dossier AI", cat: "AI PLATFORM · CLIENT WORK", img: IMG + "supramax/dossier-hero.webp",
+    sub: "STEG-compliant photovoltaic dossiers generated in minutes — AI scanner + agent.",
+    desc: "Internal platform for Supramax Energy that turns a solar PV installation into the official 21-page STEG technical dossier for low-voltage grid connection. I wrote 26 of the 30 commits: the web front-end redesign, admin, the AI datasheet scanner, the STEG PDF generator with annexes and GPS, the function-calling dossier agent and the ERP module pages.",
+    hl: "Sizing + NF C 15-100 checks + ready-to-submit PDF — one platform, zero re-typing.",
+    list: ["AI scanner extracts panel / inverter / protection / cable specs from PDF datasheets", "Dossier agent (Qwen3-8B, tool calling) reads & updates the dossier, runs compliance, writes French narrative", "Rule-based fallback checklist when the AI is unavailable", "STEG template filler → DOCX → PDF with official 21-page layout", "ERP: CRM, products, sales, purchases, stock, accounting, HR — plus an Expo mobile client"],
+    tags: ["React + TypeScript", "Recharts", "Node / Express", "MongoDB", "LLM agents", "PDF / DOCX", "Expo"],
+    gallery: [IMG + "supramax/dossier-deck.webp", IMG + "supramax/dossier-pdf.webp"],
+    link: "https://github.com/supramaxorganistation/supramaxenergydossiertechniqueai",
+  },
+  supramax: {
+    title: "Supramax Energy Website", cat: "WEB · CLIENT WORK · LIVE", img: IMG + "supramax/roof-1.webp",
+    sub: "Trilingual solar-energy website with an AI chatbot — live at supramaxenergy.tn.",
+    desc: "Public website for a Tunisian photovoltaic installer (residential, commercial, industrial). Top contributor with 29 commits: I added the server proxy that routes the contact form and the Gemini-powered “Chamouss” chatbot, fail-over timeouts and a token cap for fast answers, server-side reCAPTCHA with a client-side Web3Forms fallback, new 93 kWp and 103 kWp realisations, and the deployments.",
+    hl: "React 19 · FR / EN / AR · Leaflet map picker · Netlify serverless functions.",
+    list: ["AI chatbot with a sales persona and fault-tolerant prompts", "Contact form with reCAPTCHA verification and safe error handling", "Realisations gallery and project carousel", "Dark / light theme, language selector, SEO sitemap"],
+    tags: ["React 19", "Vite", "React Router", "Leaflet", "Gemini", "Netlify Functions", "reCAPTCHA"],
+    gallery: [IMG + "supramax/roof-2.webp", IMG + "supramax/roof-3.webp", IMG + "supramax/inverter.webp"],
+    link: "https://supramaxenergy.tn", code: "https://github.com/supramaxorganistation/reactsupramaxsite",
+  },
+  ess9ini: {
+    title: "Ess9ini", cat: "SMART AGRICULTURE · IoT + AI", img: IMG + "ess9ini/logo.png", contain: true,
+    sub: "Smart-farm dashboard for Tunisian agriculture — IoT moisture sensors + AI irrigation.",
+    desc: "A bilingual Arabic/English dashboard built for an olive farm in Gabès. IoT soil sensors stream moisture, temperature and battery; AI recommends irrigation from soil and weather data; an interactive farm map shows every sensor colour-coded by moisture.",
+    hl: "Target moisture 80 % · critical alerts under 30 % · updates every 30 s.",
+    list: ["Real-time monitoring with offline detection", "Weather-aware AI irrigation schedules per crop", "Priority alerts with acknowledgement", "Mobile-first, field-ready UI"],
+    tags: ["React 18", "Node.js", "MongoDB", "Flet", "Arduino", "WebSocket"],
+    link: "https://github.com/madaradou/ess9ini", anchor: "#ess9ini",
+  },
+  rebirth: {
+    title: "Rebirth to the World", cat: "GAME · C / SDL · 2024", img: IMG + "rebirthed/rebirth_posterr.png",
+    sub: "2D platformer in C — 2nd place at Game Day 2024 and at ESPRIT's Bal des Projets.",
+    desc: "A 2D side-scrolling platformer developed in C with SDL 1.2, revealed at the Digital Knights event. A multi-level medieval-fantasy adventure with dynamic combat, interactive storytelling, puzzles and an Arduino controller.",
+    hl: "2nd place — Game Day 2024 · 2nd place — Bal des Projets 2024 (ESPRIT).",
+    tags: ["C", "SDL 1.2", "Arduino", "Physics", "Collision detection", "Level design", "Save system", "Minimap"],
+    gallery: [IMG + "rebirthed/rebirth_logo.png"],
     video: "https://www.youtube.com/embed/G5VGV8nTPTQ",
     link: "https://github.com/madaradou/rebirthed",
   },
-  {
-    title: "Clansy",
-    sub: "Smart cleaning management platform with IoT",
-    tag: "IoT · Qt / C++",
-    cover: IMG + "cleansy/logo.png", contain: true,
-    desc: "Digital transformation of cleaning companies through IoT: automating task management, improving coordination with teams and clients, personalizing services and optimizing operational efficiency with a sustainable approach. Built with Qt and C++ for a robust desktop experience, IoT integration and analytics.",
-    skills: ["Qt Framework", "C++", "Arduino", "SQL", "RFID", "QML", "Charts & Analytics", "QR Code/Barcode", "Mapping Services", "Serial Communication", "PDF/Excel Export", "Email/SMS", "Fleet Management", "IoT Integration"],
-    media: [IMG + "cleansy/poster.png"],
+  cleansy: {
+    title: "Cleansy", cat: "DESKTOP + IoT · QT / C++", img: IMG + "cleansy/logo.png", contain: true,
+    sub: "Cleaning-centre management with Arduino RFID, mapping and analytics.",
+    desc: "Desktop platform digitalising cleaning companies: task automation, team and client coordination, fleet management and analytics — with Arduino RFID integration and real-time notifications.",
+    tags: ["Qt", "C++", "QML", "Arduino", "RFID", "SQL", "Charts", "Serial", "PDF/Excel export"],
+    gallery: [IMG + "cleansy/poster.png"],
+    link: "https://github.com/madaradou/clansyqtapp",
+  },
+  hotelia: {
+    title: "Hotelia Smart", cat: "WEB · AI RECRUITMENT", art: "HS",
+    sub: "AI-powered recruitment platform — lead developer.",
+    desc: "Recruitment platform with an AI chatbot assistant, face-recognition authentication, voice navigation, real-time messaging and Stripe payments.",
+    tags: ["PHP", "Symfony", "Python", "OpenCV", "MySQL", "Stripe"],
     link: "https://github.com/madaradou/hoteliasmartweb",
   },
-  {
-    title: "Portfolio Website",
-    sub: "Showcase your work",
-    tag: "Web · HTML / CSS / JS",
-    cover: IMG + "Portfolio-Website.webp",
-    desc: "A personal portfolio website with animations, project highlights and a contact form. Built using HTML, CSS and JavaScript to create an eye-catching presentation.",
-    skills: ["HTML", "CSS", "JavaScript", "Animation"],
+  efhemni: {
+    title: "Efhemni", cat: "MOBILE · TRANSLATION", art: "فهمني",
+    sub: "Tunisian-dialect translator for tourism and local businesses.",
+    desc: "A mobile translator designed to break the language barrier between visitors and Tunisian businesses by understanding the Tunisian dialect.",
+    tags: ["Mobile", "NLP", "Tunisian dialect"],
+    link: "https://github.com/madaradou/efhemni",
   },
-  {
-    title: "Task Manager App",
-    sub: "Boost productivity",
-    tag: "Web · Vue.js",
-    cover: IMG + "task-managment.webp",
-    desc: "A to-do list and task management app featuring drag-and-drop, priority sorting and local storage. Created using Vue.js for a modern, fast and responsive experience.",
-    skills: ["Vue.js", "Drag & Drop", "Local Storage"],
+  tasks: {
+    title: "Task Manager App", cat: "WEB · VUE.JS", img: IMG + "task-managment.webp",
+    sub: "Drag-and-drop tasks with priorities and local storage.",
+    desc: "A to-do and task management app with drag-and-drop, priority sorting and local storage, built with Vue.js.",
+    tags: ["Vue.js", "Drag & drop", "Local storage"],
   },
-  {
-    title: "Weather Forecast App",
-    sub: "Real-time weather updates",
-    tag: "Web · JavaScript · API",
-    cover: IMG + "Weather-Forecast-App.webp",
-    desc: "A weather app with real-time updates, temperature details and forecasts based on user location. Developed with JavaScript and the OpenWeather API.",
-    skills: ["JavaScript", "OpenWeather API", "Geolocation"],
-  },
-];
+};
+const featured = ["firesafe", "dossier", "supramax", "ess9ini", "rebirth"];
+const wheelOrder = ["firesafe", "dossier", "supramax", "ess9ini", "rebirth", "cleansy", "hotelia", "efhemni", "tasks"];
+const media = (p, cls = "") => p.img
+  ? `<img src="${p.img}" alt="${esc(p.title)}" class="${p.contain ? "contain" : ""} ${cls}" loading="lazy" draggable="false">`
+  : `<div class="art ${p.art === "xr" ? "art-xr" : "art-mono"}">${p.art === "xr" ? "XR" : esc(p.art)}</div>`;
 
-/* ---------- Preloader ---------- */
-const splitText = () => $$(".split").forEach((el) => {
-  el.innerHTML = [...el.textContent].map((c, i) => `<span class="ch" style="transition-delay:${i * 45}ms">${c}</span>`).join("");
+/* ================= PRELOADER ================= */
+$$(".split").forEach((el) => {
+  el.innerHTML = [...el.textContent].map((c, i) => `<span class="ch" style="transition-delay:${i * 40}ms">${c}</span>`).join("");
 });
-splitText();
-
 (function preload() {
-  const num = $("#loader-num");
-  const start = performance.now(), dur = reduced ? 1 : 1600;
+  const num = $("#loader-num"), t0 = performance.now(), dur = reduced ? 1 : 1500;
   const tick = (t) => {
-    const p = Math.min((t - start) / dur, 1);
-    num.textContent = Math.round((1 - Math.pow(1 - p, 3)) * 100);
+    const p = Math.min((t - t0) / dur, 1);
+    num.textContent = Math.round((1 - (1 - p) ** 3) * 100);
     if (p < 1) return requestAnimationFrame(tick);
     $("#loader").classList.add("done");
-    document.body.classList.remove("is-loading");
-    document.body.classList.add("ready");
-    setTimeout(() => $$(".split").forEach((s) => s.classList.add("in")), 300);
+    document.body.classList.replace("is-loading", "ready");
+    setTimeout(() => $$(".split").forEach((s) => s.classList.add("in")), 250);
   };
   requestAnimationFrame(tick);
 })();
 
-/* ---------- Cursor + magnetic ---------- */
-const dot = $(".cursor-dot"), ring = $(".cursor-ring");
+/* ================= CURSOR / MAGNETIC / TILT ================= */
+const dot = $(".cursor-dot"), ring = $(".cursor-ring"), ringLabel = $(".cursor-ring span");
 let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
 addEventListener("pointermove", (e) => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px)`; });
 (function follow() {
-  rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+  rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
   ring.style.transform = `translate(${rx}px,${ry}px)`;
   requestAnimationFrame(follow);
 })();
-document.addEventListener("pointerover", (e) => ring.classList.toggle("hover", !!e.target.closest("a, button, .wheel-card")));
-
+document.addEventListener("pointerover", (e) => {
+  const lab = e.target.closest("[data-cursor]");
+  ring.classList.toggle("label", !!lab);
+  ringLabel.textContent = lab ? lab.dataset.cursor : "";
+  ring.classList.toggle("hover", !lab && !!e.target.closest("a, button, .svc, .sensor"));
+});
 $$(".magnetic").forEach((el) => {
   el.addEventListener("pointermove", (e) => {
     const r = el.getBoundingClientRect();
@@ -90,168 +129,313 @@ $$(".magnetic").forEach((el) => {
   });
   el.addEventListener("pointerleave", () => (el.style.transform = ""));
 });
+const portrait = $("#portrait");
+$("#home").addEventListener("pointermove", (e) => {
+  if (reduced) return;
+  portrait.style.setProperty("--ry", `${(e.clientX / innerWidth - 0.5) * 10}deg`);
+  portrait.style.setProperty("--rx", `${(0.5 - e.clientY / innerHeight) * 6}deg`);
+});
 
-/* ---------- Nav ---------- */
-const nav = $("#nav"), burger = $(".burger"), drawer = $("#drawer");
-const toggleDrawer = (open) => {
-  drawer.classList.toggle("open", open); burger.classList.toggle("open", open);
-  burger.setAttribute("aria-expanded", open);
-};
-burger.addEventListener("click", () => toggleDrawer(!drawer.classList.contains("open")));
-$$("#drawer a").forEach((a) => a.addEventListener("click", () => toggleDrawer(false)));
+/* ================= NAV ================= */
+const drawer = $("#drawer"), burger = $(".burger");
+const setDrawer = (open) => { drawer.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); drawer.setAttribute("aria-hidden", !open); };
+burger.addEventListener("click", () => setDrawer(true));
+$(".drawer-close").addEventListener("click", () => setDrawer(false));
+drawer.addEventListener("click", (e) => (e.target === drawer || e.target.closest("nav a")) && setDrawer(false));
 
-const navObs = new IntersectionObserver((entries) => entries.forEach((en) => {
-  if (en.isIntersecting) $$(".nav-links a").forEach((a) => a.classList.toggle("active", a.hash === "#" + en.target.id));
-}), { rootMargin: "-45% 0px -45% 0px" });
-$$("main section[id]").forEach((s) => navObs.observe(s));
+const sectionObs = new IntersectionObserver((entries) => entries.forEach((en) => {
+  if (!en.isIntersecting) return;
+  const id = ["ess9ini", "supramax", "works"].includes(en.target.id) ? "projects" : en.target.id;
+  $$(".nav-pill a, #float-nav a").forEach((a) => a.classList.toggle("active", a.hash === "#" + id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+$$("#home, section[id], #contact").forEach((s) => sectionObs.observe(s));
 
-/* ---------- Reveal + counters ---------- */
-const countUp = (el) => {
-  const to = +el.dataset.to, t0 = performance.now();
-  const step = (t) => { const p = Math.min((t - t0) / 1400, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
-  requestAnimationFrame(step);
-};
+/* ================= REVEAL ================= */
 const revObs = new IntersectionObserver((entries) => entries.forEach((en) => {
   if (!en.isIntersecting) return;
   en.target.classList.add("in");
-  $$(".count", en.target).forEach(countUp);
   revObs.unobserve(en.target);
-}), { threshold: 0.15 });
-$$(".reveal").forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 80}ms`; revObs.observe(el); });
+}), { threshold: 0.12 });
+$$(".reveal").forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms`; revObs.observe(el); });
 
-/* ---------- Scroll-driven: progress, about expand, horizontal experience ---------- */
-const about = $(".sem"), semSticky = $(".sem-sticky");
-const exp = $("#experience"), track = $(".exp-track"), expBar = $(".exp-bar");
-const sectionProgress = (sec) => {
-  const r = sec.getBoundingClientRect();
-  return Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
-};
-let lastY = scrollY;
-const onScroll = () => {
+/* ================= SCROLL-DRIVEN ================= */
+const sem = $(".sem"), semSticky = $(".sem-sticky"), semContent = $(".sem-content");
+const exp = $("#experience"), stage = $(".exp-stage"), panels = $$(".exp-panel");
+const tkTop = $(".tk-top"), tkBot = $(".tk-bot"), phase = $("#exp-phase"), meter = $("#exp-meter");
+const jumpBtns = $$(".exp-foot button"), floatNav = $("#float-nav"), strip = $$(".sx-strip img");
+const progress = (el) => { const r = el.getBoundingClientRect(); return clamp01(-r.top / (r.height - innerHeight)); };
+
+function onScroll() {
   const y = scrollY;
   $("#progress").style.transform = `scaleX(${y / (document.documentElement.scrollHeight - innerHeight)})`;
-  nav.classList.toggle("hide", y > lastY && y > 400 && !drawer.classList.contains("open"));
-  lastY = y;
+  floatNav.classList.toggle("show", y > innerHeight * 0.9);
+  floatNav.classList.toggle("away", $("#contact").getBoundingClientRect().top < innerHeight * 0.6);
   if (reduced) return;
 
-  // about card fills the screen over the first 60% of the section's scroll
-  const p = Math.min(sectionProgress(about) / 0.6, 1);
+  const p = clamp01(progress(sem) / 0.7);
   semSticky.style.setProperty("--p", p.toFixed(4));
-  semSticky.style.setProperty("--bgo", (1 - p).toFixed(3));
+  semContent.classList.toggle("is-open", p > 0.95);
 
-  const ep = sectionProgress(exp);
-  track.style.transform = `translate3d(${-(track.scrollWidth - innerWidth) * ep}px,0,0)`;
-  expBar.style.setProperty("--ep", ep);
-};
+  const ep = progress(exp);
+  const max = stage.scrollWidth - innerWidth;
+  stage.style.transform = `translate3d(${-max * ep}px,0,0)`;
+  tkTop.style.transform = `translateX(${-ep * 40}vw)`;
+  tkBot.style.transform = `translateX(${ep * 40 - 40}vw)`;
+  meter.style.transform = `scaleX(${ep})`;
+  panels.forEach((pn) => pn.querySelector(".exp-bgdate")?.style.setProperty("--par", `${(pn.getBoundingClientRect().left) * 0.15}px`));
+  const cur = panels.reduce((best, pn) => Math.abs(pn.getBoundingClientRect().left) < Math.abs(best.getBoundingClientRect().left) ? pn : best);
+  if (phase.textContent !== cur.dataset.phase) phase.textContent = cur.dataset.phase;
+  jumpBtns.forEach((b, i) => b.classList.toggle("on", panels[i + 1] === cur));
+
+  const sr = $("#supramax").getBoundingClientRect();
+  strip.forEach((img, i) => img.style.setProperty("--sy", `${(sr.top / innerHeight) * (i % 2 ? 30 : -30)}px`));
+}
 addEventListener("scroll", () => requestAnimationFrame(onScroll), { passive: true });
 addEventListener("resize", onScroll);
 onScroll();
 
-/* ---------- Works: 3D drum wheel ---------- */
+jumpBtns.forEach((b) => b.addEventListener("click", () => {
+  const top = exp.offsetTop + (exp.offsetHeight - innerHeight) * +b.dataset.jump;
+  scrollTo({ top, behavior: "smooth" });
+}));
+
+/* ================= FLEX CAROUSEL ================= */
+const flex = $("#flex");
+flex.innerHTML = featured.map((k, i) => {
+  const p = projects[k];
+  return `<div class="fc-item${i === 0 ? " open" : ""}" tabindex="0" role="button" data-k="${k}" data-cursor="OPEN" aria-label="${esc(p.title)}">
+    <div class="fc-media">${media(p)}</div>
+    <span class="fc-num">0${i + 1}</span>
+    <span class="fc-vert">${esc(p.title.toUpperCase())}</span>
+    <div class="fc-cap"><small>${esc(p.cat)}</small><h3>${esc(p.title)}</h3><p>${esc(p.sub)}</p></div>
+  </div>`;
+}).join("");
+const fcItems = $$(".fc-item", flex);
+const openFc = (el) => fcItems.forEach((it) => it.classList.toggle("open", it === el));
+fcItems.forEach((it) => {
+  it.addEventListener("pointerenter", (e) => e.pointerType === "mouse" && openFc(it));
+  it.addEventListener("focus", () => openFc(it));
+  it.addEventListener("click", () => it.classList.contains("open") ? openProject(it.dataset.k) : openFc(it));
+  it.addEventListener("keydown", (e) => e.key === "Enter" && openProject(it.dataset.k));
+});
+
+/* ================= XR LAB ================= */
+// Embers: cheap canvas particles, only animated while the section is on screen.
+const cv = $("#embers"), cx = cv.getContext("2d"), xr = $("#xr");
+let embers = [], xrVisible = false;
+const sizeCv = () => { cv.width = xr.offsetWidth; cv.height = xr.offsetHeight; };
+sizeCv(); addEventListener("resize", sizeCv);
+const spawn = () => ({ x: Math.random() * cv.width, y: cv.height + 10, r: Math.random() * 2.2 + 0.6, vy: Math.random() * 1.2 + 0.4, vx: (Math.random() - 0.5) * 0.6, life: 1 });
+(function burn() {
+  requestAnimationFrame(burn);
+  if (!xrVisible || reduced) return;
+  if (embers.length < 90) embers.push(spawn());
+  cx.clearRect(0, 0, cv.width, cv.height);
+  embers = embers.filter((e) => e.life > 0);
+  for (const e of embers) {
+    e.y -= e.vy; e.x += e.vx + Math.sin(e.y / 40) * 0.3; e.life -= 0.0025;
+    cx.fillStyle = `rgba(255,${120 + e.r * 40 | 0},40,${e.life * 0.8})`;
+    cx.beginPath(); cx.arc(e.x, e.y, e.r, 0, 7); cx.fill();
+  }
+})();
+
+// Hold-to-extinguish ring (hold mouse / touch / E key on the HUD).
+const hud = $("#xr-hud"), pct = $("#ring-pct"), warn = $("#hud-warn");
+let fill = 0, holding = false, empty = false;
+hud.setAttribute("tabindex", "0"); hud.dataset.cursor = "HOLD";
+hud.addEventListener("pointerdown", () => (holding = true));
+addEventListener("pointerup", () => (holding = false));
+hud.addEventListener("keydown", (e) => { if (e.key.toLowerCase() === "e") { holding = true; e.preventDefault(); } });
+hud.addEventListener("keyup", () => (holding = false));
+(function hudLoop() {
+  requestAnimationFrame(hudLoop);
+  if (empty) return;
+  fill = clamp01(fill + (holding ? 0.012 : -0.02));
+  hud.style.setProperty("--ring", fill);
+  pct.textContent = Math.round(fill * 100);
+  if (fill >= 1) {
+    empty = true; warn.classList.remove("on"); void warn.offsetWidth; warn.classList.add("on");
+    setTimeout(() => { empty = false; fill = 0; warn.classList.remove("on"); }, 3200);
+  }
+})();
+
+// Extinguisher decision.
+const extInfo = {
+  water: ["bad", "✖ ELECTROCUTION", "Water conducts. Spraying a live cabinet sends current back up the stream — the run ends."],
+  foam: ["bad", "✖ ELECTROCUTION", "Water-based foam on live equipment is just as deadly. Cut the power first — or pick CO₂."],
+  co2: ["good", "✔ CORRECT CHOICE", "CO₂ is non-conductive and leaves no residue. Pull the pin [R], aim at the base from 1–2 m, sweep. Full score."],
+  powder: ["meh", "≈ WORKS — PENALISED", "ABC powder puts it out but wrecks the electronics and fills the room. Points deducted in the debrief."],
+};
+$$(".ext-btns button").forEach((b) => b.addEventListener("click", () => {
+  const [cls, head, txt] = extInfo[b.dataset.ext];
+  $$(".ext-btns button").forEach((x) => (x.className = ""));
+  b.className = cls;
+  $("#ext-result").innerHTML = `<b>${head}</b>${txt}`;
+}));
+
+// State machine auto-play while visible.
+const states = $$("#xr-states li");
+let si = 0;
+setInterval(() => {
+  if (!xrVisible) return;
+  states.forEach((li, i) => { li.classList.toggle("done", i < si); li.classList.toggle("now", i === si); });
+  si = (si + 1) % (states.length + 2);
+}, 1100);
+new IntersectionObserver(([en]) => (xrVisible = en.isIntersecting)).observe(xr);
+
+/* ================= ESS9INI DASHBOARD ================= */
+const sensors = [{ m: 72, t: 21 }, { m: 45, t: 23 }, { m: 81, t: 22 }, { m: 24, t: 25 }];
+const colorFor = (m) => m < 30 ? "#e53935" : m < 60 ? "#ff8f00" : "#2dbe82";
+let selS = 1, essVisible = false;
+function drawSensors() {
+  $$(".sensor").forEach((g, i) => { g.querySelector("circle").setAttribute("fill", colorFor(sensors[i].m)); g.classList.toggle("sel", i === selS); });
+  const s = sensors[selS], c = colorFor(s.m);
+  $("#g-fg").style.strokeDashoffset = 157 - 157 * s.m / 100;
+  $("#g-fg").style.stroke = c;
+  $("#g-val").textContent = s.m;
+  $("#s-id").textContent = selS + 1;
+  const st = $("#s-status");
+  st.className = "badge " + (s.m < 30 ? "crit" : s.m < 60 ? "warn" : "ok");
+  st.textContent = s.m < 30 ? "CRITICAL" : s.m < 60 ? "WARNING" : "OPTIMAL";
+  $("#s-rec").textContent = s.m >= 80 ? `AI: no irrigation needed · ${s.t} °C` : `AI: irrigate at 05:30 — +${80 - s.m} % to target · ${s.t} °C`;
+}
+$$(".sensor").forEach((g, i) => g.addEventListener("click", () => { selS = i; drawSensors(); }));
+setInterval(() => {
+  if (!essVisible) return;
+  sensors.forEach((s) => (s.m = Math.max(15, Math.min(92, s.m + Math.round((Math.random() - 0.5) * 6)))));
+  drawSensors();
+}, 2500);
+new IntersectionObserver(([en]) => { essVisible = en.isIntersecting; if (essVisible) drawSensors(); }).observe($("#ess-dash"));
+
+/* ================= WORKS WHEEL ================= */
 const wheel = $(".wheel"), info = $(".wheel-info");
-const STEP = 36, RADIUS = 400; // ~ card height / (2·tan(STEP/2)) so cards touch
+const STEP = 32, RADIUS = 440; // ≈ card height / (2·tan(STEP/2)) so neighbours touch
 const ringEl = document.createElement("div");
 ringEl.className = "wheel-ring";
-ringEl.innerHTML = projects.map((p, i) =>
-  `<div class="wheel-card" data-i="${i}" data-n="${String(i + 1).padStart(2, "0")}" style="transform:rotateX(${-i * STEP}deg) translateZ(${RADIUS}px)">
-     <img src="${p.cover}" alt="${p.title}" class="${p.contain ? "contain" : ""}" draggable="false"></div>`).join("");
+ringEl.innerHTML = wheelOrder.map((k, i) => `<div class="wheel-card" data-i="${i}" data-n="${String(i + 1).padStart(2, "0")}" data-t="${esc(projects[k].title.toUpperCase())}" style="transform:rotateX(${-i * STEP}deg) translateZ(${RADIUS}px)">${media(projects[k])}</div>`).join("");
 wheel.appendChild(ringEl);
-const cards = $$(".wheel-card", ringEl);
-
+wheel.dataset.cursor = "DRAG";
+const wCards = $$(".wheel-card", ringEl);
 let pos = 0, target = 0, shown = -1;
-const clamp = (v) => Math.max(0, Math.min(projects.length - 1, v));
-const go = (i) => (target = clamp(i));
-
-const showInfo = (i) => {
+const clampI = (v) => Math.max(0, Math.min(wheelOrder.length - 1, v));
+const go = (i) => (target = clampI(i));
+function showInfo(i) {
   if (i === shown) return;
   shown = i;
   info.classList.add("swap");
   setTimeout(() => {
-    $(".wheel-idx").textContent = `${String(i + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
-    $(".wheel-title").textContent = projects[i].title;
-    $(".wheel-sub").textContent = projects[i].sub;
+    const p = projects[wheelOrder[i]];
+    $(".wheel-idx").textContent = `${String(i + 1).padStart(2, "0")} / ${String(wheelOrder.length).padStart(2, "0")}`;
+    $(".wheel-cat").textContent = p.cat;
+    $(".wheel-title").textContent = p.title;
+    $(".wheel-sub").textContent = p.sub;
     info.classList.remove("swap");
-  }, 200);
-  cards.forEach((c, k) => c.classList.toggle("active", k === i));
-};
+  }, 180);
+  wCards.forEach((c, k) => c.classList.toggle("active", k === i));
+}
 (function spin() {
   pos += (target - pos) * 0.12;
   ringEl.style.transform = `translateZ(${-RADIUS}px) rotateX(${pos * STEP}deg)`;
-  showInfo(Math.round(pos));
+  showInfo(Math.round(clampI(pos)));
   requestAnimationFrame(spin);
 })();
-
 let dragY = null, dragStart = 0, moved = false;
 wheel.addEventListener("pointerdown", (e) => { dragY = e.clientY; dragStart = target; moved = false; wheel.setPointerCapture(e.pointerId); });
 wheel.addEventListener("pointermove", (e) => {
   if (dragY === null) return;
   const dy = e.clientY - dragY;
   if (Math.abs(dy) > 4) moved = true;
-  target = Math.max(-0.4, Math.min(projects.length - 0.6, dragStart - dy / 120));
+  target = Math.max(-0.4, Math.min(wheelOrder.length - 0.6, dragStart - dy / 110));
 });
 wheel.addEventListener("pointerup", (e) => {
   if (dragY === null) return;
   dragY = null;
   if (!moved) {
-    const card = document.elementFromPoint(e.clientX, e.clientY)?.closest(".wheel-card");
-    if (card) +card.dataset.i === Math.round(pos) ? openModal(+card.dataset.i) : go(+card.dataset.i);
+    const card = document.elementsFromPoint(e.clientX, e.clientY).find((n) => n.classList?.contains("wheel-card"));
+    if (card) +card.dataset.i === Math.round(pos) ? openProject(wheelOrder[+card.dataset.i]) : go(+card.dataset.i);
   }
   go(Math.round(target));
 });
 let wheelLock = 0;
 wheel.addEventListener("wheel", (e) => {
-  const dir = Math.sign(e.deltaY), next = clamp(Math.round(target) + dir);
-  if (next === Math.round(target)) return; // at an end: let the page scroll on
+  const next = clampI(Math.round(target) + Math.sign(e.deltaY));
+  if (next === Math.round(target)) return; // at an end: let the page scroll
   e.preventDefault();
-  if (Date.now() - wheelLock < 350) return;
+  if (Date.now() - wheelLock < 320) return;
   wheelLock = Date.now(); go(next);
 }, { passive: false });
 wheel.addEventListener("keydown", (e) => {
   if (e.key === "ArrowDown") { e.preventDefault(); go(Math.round(target) + 1); }
   if (e.key === "ArrowUp") { e.preventDefault(); go(Math.round(target) - 1); }
-  if (e.key === "Enter") openModal(Math.round(target));
+  if (e.key === "Enter") openProject(wheelOrder[Math.round(target)]);
 });
-$(".wheel-open").addEventListener("click", () => openModal(Math.round(target)));
+$(".wheel-open").addEventListener("click", () => openProject(wheelOrder[Math.round(target)]));
 
-/* ---------- Modal ---------- */
-const modal = $("#modal"), body = $(".modal-body");
-const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+/* ================= SERVICES ================= */
+const svcs = $$(".svc");
+const selectSvc = (i) => svcs.forEach((s, k) => s.classList.toggle("active", k === i));
+svcs.forEach((s, i) => s.addEventListener("click", (e) => !e.target.closest("button") && selectSvc(i)));
+$$(".disciplines a").forEach((a) => a.addEventListener("click", () => selectSvc(+a.dataset.svc)));
+
+/* ================= MODALS ================= */
 let lastFocus = null;
-function openModal(i) {
-  const p = projects[i];
-  body.innerHTML = `
-    <div class="modal-hero"><img src="${p.cover}" alt="" class="${p.contain ? "contain" : ""}"></div>
-    <div class="modal-inner">
-      <span class="tag">${esc(p.tag)}</span>
-      <h2 id="m-title">${esc(p.title)}</h2>
-      <p>${esc(p.desc)}</p>
-      <h4>Skills & Technologies</h4>
-      <div class="chips">${p.skills.map((s) => `<span>${esc(s)}</span>`).join("")}</div>
-      ${p.media ? `<h4>Event poster</h4><div class="modal-media">${p.media.map((m) => `<img src="${m}" alt="${esc(p.title)} poster">`).join("")}</div>` : ""}
-      ${p.video ? `<h4>Demo</h4><div class="video"><iframe src="${p.video}" title="${esc(p.title)} trailer" allowfullscreen loading="lazy"></iframe></div>` : ""}
-      ${p.link ? `<a class="btn btn-dark" href="${p.link}" target="_blank" rel="noopener">View on GitHub ↗</a>` : ""}
-    </div>`;
+function openOverlay(el) {
   lastFocus = document.activeElement;
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
+  el.classList.add("open"); el.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  $(".modal-close").focus();
+  setTimeout(() => $("[data-close]", el).focus(), 50);
 }
-function closeModal() {
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
+function closeOverlay(el) {
+  el.classList.remove("open"); el.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
-  setTimeout(() => { if (!modal.classList.contains("open")) body.innerHTML = ""; }, 500); // stops the video
+  if (el.id === "modal") setTimeout(() => { if (!el.classList.contains("open")) $(".m-body", el).innerHTML = ""; }, 450); // stops the video
   lastFocus?.focus();
 }
-$(".modal-close").addEventListener("click", closeModal);
-modal.addEventListener("click", (e) => e.target === modal && closeModal());
-addEventListener("keydown", (e) => e.key === "Escape" && modal.classList.contains("open") && closeModal());
+$$(".overlay").forEach((o) => {
+  o.addEventListener("click", (e) => (e.target === o || e.target.closest("[data-close]")) && closeOverlay(o));
+});
+addEventListener("keydown", (e) => e.key === "Escape" && $$(".overlay.open").forEach(closeOverlay));
 
-/* ---------- Toast + footer ---------- */
-const toast = (msg) => {
+function openProject(k) {
+  const p = projects[k], m = $("#modal");
+  $("#m-cat").textContent = p.cat;
+  $("#m-title").textContent = p.title;
+  $(".m-body", m).innerHTML = `
+    <div class="m-img">${media(p)}</div>
+    <p>${esc(p.desc)}</p>
+    ${p.hl ? `<div class="m-hl"><small>KEY HIGHLIGHTS</small>${esc(p.hl)}</div>` : ""}
+    ${p.list ? `<div><h4>WHAT I BUILT</h4><ul>${p.list.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></div>` : ""}
+    <div><h4>TOOLS & TECH</h4><div class="chips">${p.tags.map((t) => `<span>${esc(t)}</span>`).join("")}</div></div>
+    ${p.gallery ? `<div class="m-gallery">${p.gallery.map((g) => `<img src="${g}" alt="${esc(p.title)} image" loading="lazy">`).join("")}</div>` : ""}
+    ${p.video ? `<div class="video"><iframe src="${p.video}" title="${esc(p.title)} trailer" allowfullscreen loading="lazy"></iframe></div>` : ""}
+    <div class="m-links">
+      ${p.anchor ? `<a class="btn-line" href="${p.anchor}" data-close>READ CASE STUDY ↓</a>` : ""}
+      ${p.link ? `<a class="btn-black" href="${p.link}" target="_blank" rel="noopener">${p.link.includes("github") ? "VIEW ON GITHUB" : "VISIT SITE"} ↗</a>` : ""}
+      ${p.code ? `<a class="btn-line" href="${p.code}" target="_blank" rel="noopener">CODE ↗</a>` : ""}
+    </div>`;
+  openOverlay(m);
+}
+$$("[data-open]").forEach((b) => b.addEventListener("click", () => openProject(b.dataset.open === "supramax-dossier" ? "dossier" : b.dataset.open)));
+
+const cModal = $("#contact-modal"), form = $("#contact-form");
+$$("[data-contact]").forEach((b) => b.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (b.dataset.contact) form.service.value = b.dataset.contact;
+  openOverlay(cModal);
+}));
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const d = new FormData(form);
+  const body = `${d.get("message")}\n\n— ${d.get("name")}`;
+  location.href = `mailto:wesslatiyassine@gmail.com?subject=${encodeURIComponent(`[Portfolio] ${d.get("service")}`)}&body=${encodeURIComponent(body)}`;
+  closeOverlay(cModal); form.reset();
+  toast("Opening your mail app…");
+});
+
+/* ================= MISC ================= */
+function toast(msg) {
   const t = $("#toast"); t.textContent = msg; t.classList.add("show");
-  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200);
-};
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2400);
+}
 $$("a[download]").forEach((a) => a.addEventListener("click", () => toast("Downloading resume…")));
 $("#year").textContent = new Date().getFullYear();
