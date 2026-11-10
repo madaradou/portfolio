@@ -14,7 +14,6 @@ const projects = {
     hl: "Scenario state machine: Briefing → Early warning → Inspection → Ignition → Power cut → Extinguish → Secure → Debrief.",
     list: ["Extinguisher types as ScriptableObjects — CO₂ correct, powder penalised, water/foam lethal", "Fire stages that spread to the cable tray and re-ignite if power is live", "Panicking coworker NPC with health, calming interaction and evacuation", "Keyboard / gamepad / touch with auto-switching and rebinding", "Three difficulties — Facile, Normal, Examen — with scoring and debrief"],
     tags: ["Unity 6.3", "C#", "URP", "UI Toolkit", "NavMesh", "Input System", "Particle VFX"],
-    anchor: "#xr",
   },
   dossier: {
     title: "Supramax Dossier AI", cat: "AI PLATFORM · CLIENT WORK", img: IMG + "supramax/dossier-hero.webp",
@@ -43,7 +42,7 @@ const projects = {
     hl: "Target moisture 80 % · critical alerts under 30 % · updates every 30 s.",
     list: ["Real-time monitoring with offline detection", "Weather-aware AI irrigation schedules per crop", "Priority alerts with acknowledgement", "Mobile-first, field-ready UI"],
     tags: ["React 18", "Node.js", "MongoDB", "Flet", "Arduino", "WebSocket"],
-    link: "https://github.com/madaradou/ess9ini", anchor: "#ess9ini",
+    link: "https://github.com/madaradou/ess9ini",
   },
   rebirth: {
     title: "Rebirth to the World", cat: "GAME · C / SDL · 2024", img: IMG + "rebirthed/rebirth_posterr.png",
@@ -77,15 +76,9 @@ const projects = {
     tags: ["Mobile", "NLP", "Tunisian dialect"],
     link: "https://github.com/madaradou/efhemni",
   },
-  tasks: {
-    title: "Task Manager App", cat: "WEB · VUE.JS", img: IMG + "task-managment.webp",
-    sub: "Drag-and-drop tasks with priorities and local storage.",
-    desc: "A to-do and task management app with drag-and-drop, priority sorting and local storage, built with Vue.js.",
-    tags: ["Vue.js", "Drag & drop", "Local storage"],
-  },
 };
 const featured = ["firesafe", "dossier", "supramax", "ess9ini", "rebirth"];
-const wheelOrder = ["firesafe", "dossier", "supramax", "ess9ini", "rebirth", "cleansy", "hotelia", "efhemni", "tasks"];
+const wheelOrder = ["firesafe", "dossier", "supramax", "ess9ini", "rebirth", "cleansy", "hotelia", "efhemni"];
 const media = (p, cls = "") => p.img
   ? `<img src="${p.img}" alt="${esc(p.title)}" class="${p.contain ? "contain" : ""} ${cls}" loading="lazy" draggable="false">`
   : `<div class="art ${p.art === "xr" ? "art-xr" : "art-mono"}">${p.art === "xr" ? "XR" : esc(p.art)}</div>`;
@@ -145,7 +138,7 @@ drawer.addEventListener("click", (e) => (e.target === drawer || e.target.closest
 
 const sectionObs = new IntersectionObserver((entries) => entries.forEach((en) => {
   if (!en.isIntersecting) return;
-  const id = ["ess9ini", "supramax", "works"].includes(en.target.id) ? "projects" : en.target.id;
+  const id = en.target.id;
   $$(".nav-pill a, #float-nav a").forEach((a) => a.classList.toggle("active", a.hash === "#" + id));
 }), { rootMargin: "-45% 0px -50% 0px" });
 $$("#home, section[id], #contact").forEach((s) => sectionObs.observe(s));
@@ -162,7 +155,7 @@ $$(".reveal").forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms
 const sem = $(".sem"), semSticky = $(".sem-sticky"), semContent = $(".sem-content");
 const exp = $("#experience"), stage = $(".exp-stage"), panels = $$(".exp-panel");
 const tkTop = $(".tk-top"), tkBot = $(".tk-bot"), phase = $("#exp-phase"), meter = $("#exp-meter");
-const jumpBtns = $$(".exp-foot button"), floatNav = $("#float-nav"), strip = $$(".sx-strip img");
+const jumpBtns = $$(".exp-foot button"), floatNav = $("#float-nav");
 const progress = (el) => { const r = el.getBoundingClientRect(); return clamp01(-r.top / (r.height - innerHeight)); };
 
 function onScroll() {
@@ -186,9 +179,6 @@ function onScroll() {
   const cur = panels.reduce((best, pn) => Math.abs(pn.getBoundingClientRect().left) < Math.abs(best.getBoundingClientRect().left) ? pn : best);
   if (phase.textContent !== cur.dataset.phase) phase.textContent = cur.dataset.phase;
   jumpBtns.forEach((b, i) => b.classList.toggle("on", panels[i + 1] === cur));
-
-  const sr = $("#supramax").getBoundingClientRect();
-  strip.forEach((img, i) => img.style.setProperty("--sy", `${(sr.top / innerHeight) * (i % 2 ? 30 : -30)}px`));
 }
 addEventListener("scroll", () => requestAnimationFrame(onScroll), { passive: true });
 addEventListener("resize", onScroll);
@@ -218,94 +208,6 @@ fcItems.forEach((it) => {
   it.addEventListener("click", () => it.classList.contains("open") ? openProject(it.dataset.k) : openFc(it));
   it.addEventListener("keydown", (e) => e.key === "Enter" && openProject(it.dataset.k));
 });
-
-/* ================= XR LAB ================= */
-// Embers: cheap canvas particles, only animated while the section is on screen.
-const cv = $("#embers"), cx = cv.getContext("2d"), xr = $("#xr");
-let embers = [], xrVisible = false;
-const sizeCv = () => { cv.width = xr.offsetWidth; cv.height = xr.offsetHeight; };
-sizeCv(); addEventListener("resize", sizeCv);
-const spawn = () => ({ x: Math.random() * cv.width, y: cv.height + 10, r: Math.random() * 2.2 + 0.6, vy: Math.random() * 1.2 + 0.4, vx: (Math.random() - 0.5) * 0.6, life: 1 });
-(function burn() {
-  requestAnimationFrame(burn);
-  if (!xrVisible || reduced) return;
-  if (embers.length < 90) embers.push(spawn());
-  cx.clearRect(0, 0, cv.width, cv.height);
-  embers = embers.filter((e) => e.life > 0);
-  for (const e of embers) {
-    e.y -= e.vy; e.x += e.vx + Math.sin(e.y / 40) * 0.3; e.life -= 0.0025;
-    cx.fillStyle = `rgba(255,${120 + e.r * 40 | 0},40,${e.life * 0.8})`;
-    cx.beginPath(); cx.arc(e.x, e.y, e.r, 0, 7); cx.fill();
-  }
-})();
-
-// Hold-to-extinguish ring (hold mouse / touch / E key on the HUD).
-const hud = $("#xr-hud"), pct = $("#ring-pct"), warn = $("#hud-warn");
-let fill = 0, holding = false, empty = false;
-hud.setAttribute("tabindex", "0"); hud.dataset.cursor = "HOLD";
-hud.addEventListener("pointerdown", () => (holding = true));
-addEventListener("pointerup", () => (holding = false));
-hud.addEventListener("keydown", (e) => { if (e.key.toLowerCase() === "e") { holding = true; e.preventDefault(); } });
-hud.addEventListener("keyup", () => (holding = false));
-(function hudLoop() {
-  requestAnimationFrame(hudLoop);
-  if (empty) return;
-  fill = clamp01(fill + (holding ? 0.012 : -0.02));
-  hud.style.setProperty("--ring", fill);
-  pct.textContent = Math.round(fill * 100);
-  if (fill >= 1) {
-    empty = true; warn.classList.remove("on"); void warn.offsetWidth; warn.classList.add("on");
-    setTimeout(() => { empty = false; fill = 0; warn.classList.remove("on"); }, 3200);
-  }
-})();
-
-// Extinguisher decision.
-const extInfo = {
-  water: ["bad", "✖ ELECTROCUTION", "Water conducts. Spraying a live cabinet sends current back up the stream — the run ends."],
-  foam: ["bad", "✖ ELECTROCUTION", "Water-based foam on live equipment is just as deadly. Cut the power first — or pick CO₂."],
-  co2: ["good", "✔ CORRECT CHOICE", "CO₂ is non-conductive and leaves no residue. Pull the pin [R], aim at the base from 1–2 m, sweep. Full score."],
-  powder: ["meh", "≈ WORKS — PENALISED", "ABC powder puts it out but wrecks the electronics and fills the room. Points deducted in the debrief."],
-};
-$$(".ext-btns button").forEach((b) => b.addEventListener("click", () => {
-  const [cls, head, txt] = extInfo[b.dataset.ext];
-  $$(".ext-btns button").forEach((x) => (x.className = ""));
-  b.className = cls;
-  $("#ext-result").innerHTML = `<b>${head}</b>${txt}`;
-}));
-
-// State machine auto-play while visible.
-const states = $$("#xr-states li");
-let si = 0;
-setInterval(() => {
-  if (!xrVisible) return;
-  states.forEach((li, i) => { li.classList.toggle("done", i < si); li.classList.toggle("now", i === si); });
-  si = (si + 1) % (states.length + 2);
-}, 1100);
-new IntersectionObserver(([en]) => (xrVisible = en.isIntersecting)).observe(xr);
-
-/* ================= ESS9INI DASHBOARD ================= */
-const sensors = [{ m: 72, t: 21 }, { m: 45, t: 23 }, { m: 81, t: 22 }, { m: 24, t: 25 }];
-const colorFor = (m) => m < 30 ? "#e53935" : m < 60 ? "#ff8f00" : "#2dbe82";
-let selS = 1, essVisible = false;
-function drawSensors() {
-  $$(".sensor").forEach((g, i) => { g.querySelector("circle").setAttribute("fill", colorFor(sensors[i].m)); g.classList.toggle("sel", i === selS); });
-  const s = sensors[selS], c = colorFor(s.m);
-  $("#g-fg").style.strokeDashoffset = 157 - 157 * s.m / 100;
-  $("#g-fg").style.stroke = c;
-  $("#g-val").textContent = s.m;
-  $("#s-id").textContent = selS + 1;
-  const st = $("#s-status");
-  st.className = "badge " + (s.m < 30 ? "crit" : s.m < 60 ? "warn" : "ok");
-  st.textContent = s.m < 30 ? "CRITICAL" : s.m < 60 ? "WARNING" : "OPTIMAL";
-  $("#s-rec").textContent = s.m >= 80 ? `AI: no irrigation needed · ${s.t} °C` : `AI: irrigate at 05:30 — +${80 - s.m} % to target · ${s.t} °C`;
-}
-$$(".sensor").forEach((g, i) => g.addEventListener("click", () => { selS = i; drawSensors(); }));
-setInterval(() => {
-  if (!essVisible) return;
-  sensors.forEach((s) => (s.m = Math.max(15, Math.min(92, s.m + Math.round((Math.random() - 0.5) * 6)))));
-  drawSensors();
-}, 2500);
-new IntersectionObserver(([en]) => { essVisible = en.isIntersecting; if (essVisible) drawSensors(); }).observe($("#ess-dash"));
 
 /* ================= WORKS WHEEL ================= */
 const wheel = $(".wheel"), info = $(".wheel-info");
@@ -409,13 +311,11 @@ function openProject(k) {
     ${p.gallery ? `<div class="m-gallery">${p.gallery.map((g) => `<img src="${g}" alt="${esc(p.title)} image" loading="lazy">`).join("")}</div>` : ""}
     ${p.video ? `<div class="video"><iframe src="${p.video}" title="${esc(p.title)} trailer" allowfullscreen loading="lazy"></iframe></div>` : ""}
     <div class="m-links">
-      ${p.anchor ? `<a class="btn-line" href="${p.anchor}" data-close>READ CASE STUDY ↓</a>` : ""}
       ${p.link ? `<a class="btn-black" href="${p.link}" target="_blank" rel="noopener">${p.link.includes("github") ? "VIEW ON GITHUB" : "VISIT SITE"} ↗</a>` : ""}
       ${p.code ? `<a class="btn-line" href="${p.code}" target="_blank" rel="noopener">CODE ↗</a>` : ""}
     </div>`;
   openOverlay(m);
 }
-$$("[data-open]").forEach((b) => b.addEventListener("click", () => openProject(b.dataset.open === "supramax-dossier" ? "dossier" : b.dataset.open)));
 
 const cModal = $("#contact-modal"), form = $("#contact-form");
 $$("[data-contact]").forEach((b) => b.addEventListener("click", (e) => {

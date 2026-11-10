@@ -32,7 +32,7 @@
       <a href="#about">ABOUT ME</a>
       <a href="#experience">EXPERIENCE</a>
       <a href="#projects">PROJECTS</a>
-      <a href="#xr">XR LAB</a>
+      <a href="#works">ALL WORKS</a>
       <a href="#services">SERVICES</a>
     </nav>
     <div class="pill socials">
@@ -45,14 +45,14 @@
 
   <!-- floating mini nav once you scroll -->
   <nav id="float-nav" class="pill" aria-hidden="true">
-    <a href="#home">●</a><a href="#about">ABOUT</a><a href="#experience">EXP</a><a href="#projects">WORK</a><a href="#xr">XR</a><a href="#contact">TALK</a>
+    <a href="#home">●</a><a href="#about">ABOUT</a><a href="#experience">EXP</a><a href="#projects">WORK</a><a href="#works">ALL</a><a href="#contact">TALK</a>
   </nav>
 
   <div id="drawer" aria-hidden="true">
     <div class="drawer-card">
       <div class="drawer-top"><span class="wordmark">YASSIN<span class="wm-dot"></span></span><button class="drawer-close" aria-label="Close menu">✕</button></div>
       <nav>
-        <a href="#home">HOME</a><a href="#about">ABOUT ME</a><a href="#experience">EXPERIENCE</a><a href="#projects">PROJECTS</a><a href="#xr">XR LAB</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a>
+        <a href="#home">HOME</a><a href="#about">ABOUT ME</a><a href="#experience">EXPERIENCE</a><a href="#projects">PROJECTS</a><a href="#works">ALL WORKS</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a>
       </nav>
       <div class="drawer-foot"><small>YASSIN WESSLATI</small><p>Engineering student · XR & full-stack developer</p></div>
     </div>
@@ -84,7 +84,7 @@
       <div class="hero-right">
         <p class="pitch">I BUILD THINGS YOU CAN STEP INTO, PLAY, AND PLUG IN — FROM XR FIRE-SAFETY SIMULATORS TO SMART FARMS.</p>
         <div class="disciplines">
-          <a href="#xr" data-svc="0">XR SIMULATION</a>
+          <a href="#services" data-svc="0">XR SIMULATION</a>
           <a href="#services" data-svc="1">GAME DEVELOPMENT</a>
           <a href="#services" data-svc="2">IoT & EMBEDDED</a>
           <a href="#services" data-svc="3" class="on">FULL-STACK & MOBILE</a>
@@ -118,7 +118,7 @@
             <div class="sem-foot">
               <div>
                 <div class="sem-disc"><b>DISCIPLINE & CRAFT</b><i></i><span class="mono">XR • GAMES • IoT • FULL-STACK</span></div>
-                <p>I'M AN ENGINEERING STUDENT AT ESPRIT AND FOUNDER OF TACHE-LIK, AN EDUCATIONAL PLATFORM GUIDING ESPRIT STUDENTS. I WORK END-TO-END — FROM ARCHITECTURE TO DEPLOYMENT — ACROSS UNITY XR, GAMES IN C, QT DESKTOP + ARDUINO, AND REACT / FLUTTER APPS.</p>
+                <p>I'M AN ENGINEERING STUDENT AT ESPRIT, BUILDING SOFTWARE THAT TOUCHES THE REAL WORLD. I WORK END-TO-END — FROM ARCHITECTURE TO DEPLOYMENT — ACROSS UNITY XR, GAMES IN C, QT DESKTOP + ARDUINO, AND REACT / FLUTTER APPS.</p>
               </div>
               <div class="sem-ctas">
                 <button class="btn-white" data-contact>GET IN TOUCH</button>
@@ -144,8 +144,8 @@
     <div class="exp-sticky">
       <div class="exp-grid-bg"></div>
       <div class="exp-tickers" aria-hidden="true">
-        <div class="tk tk-top">XR DEVELOPER &nbsp; GAME DEVELOPER &nbsp; IoT ENGINEER &nbsp; FOUNDER &nbsp; XR DEVELOPER &nbsp; GAME DEVELOPER &nbsp;</div>
-        <div class="tk tk-bot">ESPRIT &nbsp; GAME DAY 2024 &nbsp; TUNISIE TELECOM &nbsp; TACHE-LIK &nbsp; ESPRIT &nbsp; GAME DAY 2024 &nbsp;</div>
+        <div class="tk tk-top">XR DEVELOPER &nbsp; GAME DEVELOPER &nbsp; IoT ENGINEER &nbsp; XR DEVELOPER &nbsp; GAME DEVELOPER &nbsp;</div>
+        <div class="tk tk-bot">ESPRIT &nbsp; GAME DAY 2024 &nbsp; TUNISIE TELECOM &nbsp; ESPRIT &nbsp; GAME DAY 2024 &nbsp;</div>
       </div>
       <header class="exp-hud">
         <span id="exp-phase">FOUNDATION & JOURNEY</span>
@@ -196,25 +196,13 @@
             </div>
           </div>
 
-          <div class="exp-panel" data-phase="FOUNDER · TACHE-LIK">
-            <div class="exp-bgdate">LEAD</div>
-            <div class="exp-eyebrow"><span>FOUNDER</span><i></i><b>TACHE-LIK</b><em>EDTECH</em></div>
-            <h3>FOUNDER &<br>MENTOR</h3>
-            <p>Founded Tache-Lik, an educational platform guiding ESPRIT students — leading the full-stack build, technical strategy and AI-powered learning features.</p>
-            <div class="exp-specs">
-              <div><small>LEADERSHIP</small>Product & technical strategy</div>
-              <div><small>BUILD</small>Full-stack, real-time features</div>
-              <div><small>IMPACT</small>Mentoring ESPRIT students</div>
-            </div>
-          </div>
         </div>
       </div>
 
       <footer class="exp-foot">
-        <button data-jump="0.22">ESPRIT</button>
-        <button data-jump="0.47">AWARDS</button>
-        <button data-jump="0.72">TELECOM</button>
-        <button data-jump="1">FOUNDER</button>
+        <button data-jump="0.33">ESPRIT</button>
+        <button data-jump="0.66">AWARDS</button>
+        <button data-jump="1">TELECOM</button>
       </footer>
     </div>
   </section>
@@ -226,172 +214,6 @@
       <p class="sec-note reveal">HOVER TO EXPAND · CLICK TO OPEN</p>
     </div>
     <div class="flex-carousel reveal" id="flex"></div>
-  </section>
-
-  <!-- ============ XR LAB ============ -->
-  <section id="xr">
-    <canvas id="embers" aria-hidden="true"></canvas>
-    <div class="xr-inner wrap">
-      <div class="xr-head">
-        <span class="chip chip-fire"><span class="rec"></span> XR LAB — CASE STUDY 01</span>
-        <h2 class="xr-title reveal">FIRESAFE <span class="xr-x">XR</span></h2>
-        <p class="xr-lede reveal">A first-person fire-safety <b>training simulator</b> built by a team of four in <b>Unity 6.3 LTS</b> — one scenario each. Mine is the <b>electrical fire</b>: a burning cabinet where the wrong extinguisher can kill you.</p>
-      </div>
-
-      <div class="xr-grid">
-        <!-- HUD mock -->
-        <div class="xr-hud reveal" id="xr-hud">
-          <div class="hud-top"><span>MODULE 04 — FEU D'ARMOIRE ÉLECTRIQUE</span><span class="mono">EXAMEN</span></div>
-          <div class="hud-center">
-            <svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><circle class="ring-fg" cx="60" cy="60" r="52"/></svg>
-            <div class="ring-label"><b id="ring-pct">0</b>%<small>MAINTENIR [E]</small></div>
-          </div>
-          <div class="hud-warn" id="hud-warn">⚠ EXTINCTEUR VIDE — PRENEZ UN AUTRE ! <span>(1 foyer restant)</span></div>
-          <div class="hud-keys"><kbd>E</kbd> ÉTEINDRE <kbd>R</kbd> GOUPILLE <kbd>F</kbd> INSPECTER <kbd>G</kbd> LÂCHER</div>
-        </div>
-
-        <!-- Extinguisher decision -->
-        <div class="xr-ext reveal">
-          <h4>PICK THE RIGHT EXTINGUISHER</h4>
-          <p class="mono dim">Live electrical cabinet. Choose:</p>
-          <div class="ext-btns">
-            <button data-ext="water">WATER</button>
-            <button data-ext="foam">FOAM</button>
-            <button data-ext="co2">CO₂</button>
-            <button data-ext="powder">POWDER ABC</button>
-          </div>
-          <div class="ext-result" id="ext-result" aria-live="polite">Pull the pin [R] · aim at the base · sweep — 1–2 m.</div>
-        </div>
-      </div>
-
-      <!-- Scenario state machine -->
-      <div class="xr-flow reveal">
-        <h4>SCENARIO STATE MACHINE</h4>
-        <ol id="xr-states">
-          <li>BRIEFING</li><li>NORMAL</li><li>EARLY WARNING<small>sparks · buzz · smoke</small></li><li>INSPECTION<small>[F] identify hazard</small></li><li>IGNITION<small>alarm</small></li><li>POWER CUT<small>main breaker · lockout</small></li><li>EXTINGUISH<small>re-ignition check</small></li><li>SECURE<small>ventilate</small></li><li>DEBRIEF<small>score</small></li>
-        </ol>
-      </div>
-
-      <div class="xr-cols">
-        <div class="xr-card reveal">
-          <span class="num">01</span>
-          <h4>Module 3 — shipped</h4>
-          <p>First-person controller, pick-up / drop extinguishers with sway & recoil, hold-to-extinguish with sphere-cast + line-of-sight (no spraying through walls), one extinguisher per fire, NavMesh NPC that takes smoke damage, UI Toolkit menus and a one-click scene builder.</p>
-        </div>
-        <div class="xr-card reveal">
-          <span class="num">02</span>
-          <h4>Module 4 — electrical fire</h4>
-          <p>Fire stages that spread to the cable tray and re-ignite if the power is still on, a main-breaker power cut with emergency lighting, safety-decision scoring and a debrief, plus three difficulties: Facile, Normal, Examen.</p>
-        </div>
-        <div class="xr-card reveal">
-          <span class="num">03</span>
-          <h4>The panicking coworker</h4>
-          <p>An NPC runs at the fire with a <i>water</i> extinguisher. Stop him, hold [E] to calm him down, then guide him crouched through the smoke to the assembly point — with French voice lines, subtitles and heartbeat audio.</p>
-        </div>
-      </div>
-
-      <div class="chips xr-chips reveal">
-        <span>Unity 6.3 LTS</span><span>URP</span><span>C#</span><span>New Input System</span><span>UI Toolkit (UXML/USS)</span><span>AI Navigation</span><span>ScriptableObjects</span><span>Particle VFX</span><span>MCP for Unity</span><span>Keyboard · Gamepad · Touch</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ESS9INI ============ -->
-  <section id="ess9ini" class="wrap">
-    <div class="ess">
-      <div class="ess-copy">
-        <span class="chip">CASE STUDY 02 — SMART AGRICULTURE</span>
-        <h2 class="sec-title reveal">ESS9INI <span class="ar" lang="ar">إسقيني</span></h2>
-        <p class="reveal">A smart-farm dashboard built for Tunisian agriculture — first for an olive farm in Gabès <span lang="ar">(مزرعة الزياتين، قابس)</span>. IoT soil sensors stream moisture, temperature and battery levels; an AI layer turns soil + weather into irrigation recommendations, in an <b>Arabic / English</b> interface farmers can use in the field.</p>
-        <ul class="ess-list reveal">
-          <li><b>Real-time monitoring</b> — 4 sensors, updates every 30 s, offline detection</li>
-          <li><b>AI irrigation</b> — weather-aware schedules for olive trees, date palms and cereals</li>
-          <li><b>Interactive farm map</b> — click a sensor, colour-coded by moisture</li>
-          <li><b>Alerts</b> — critical &lt; 30 %, warning 30–60 %, target 80 %</li>
-        </ul>
-        <div class="chips reveal"><span>React 18</span><span>Node.js</span><span>MongoDB</span><span>Flet</span><span>Arduino / IoT</span><span>REST + WebSocket</span></div>
-        <a class="btn-black magnetic reveal" href="https://github.com/madaradou/ess9ini" target="_blank" rel="noopener">VIEW ON GITHUB ↗</a>
-      </div>
-
-      <div class="ess-dash reveal" id="ess-dash">
-        <div class="dash-top"><img src="./assets/images/ess9ini/logo.png" alt="Ess9ini logo"><span class="mono">GABÈS · 12.5 ha · <span class="live">LIVE</span></span></div>
-        <div class="dash-map">
-          <svg viewBox="0 0 300 170" aria-label="Farm sensor map">
-            <rect x="6" y="6" width="288" height="158" rx="14" class="field"/>
-            <path d="M6 60 H294 M6 112 H294 M100 6 V164 M200 6 V164" class="rows"/>
-            <g class="sensor" data-s="0"><circle cx="58" cy="38" r="9"/><text x="58" y="42">1</text></g>
-            <g class="sensor" data-s="1"><circle cx="160" cy="86" r="9"/><text x="160" y="90">2</text></g>
-            <g class="sensor" data-s="2"><circle cx="246" cy="40" r="9"/><text x="246" y="44">3</text></g>
-            <g class="sensor" data-s="3"><circle cx="72" cy="136" r="9"/><text x="72" y="140">4</text></g>
-          </svg>
-        </div>
-        <div class="dash-row">
-          <div class="gauge">
-            <svg viewBox="0 0 120 70"><path d="M10 64 A50 50 0 0 1 110 64" class="g-bg"/><path d="M10 64 A50 50 0 0 1 110 64" class="g-fg" id="g-fg"/></svg>
-            <div class="g-val"><b id="g-val">0</b>%<small lang="ar">رطوبة التربة</small></div>
-          </div>
-          <div class="dash-info">
-            <small>SENSOR <b id="s-id">2</b></small>
-            <div id="s-status" class="badge warn">WARNING</div>
-            <p class="mono" id="s-rec">AI: irrigate at 05:30 — +35 % to target</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SUPRAMAX ============ -->
-  <section id="supramax">
-    <div class="wrap">
-      <div class="sx-head">
-        <div>
-          <span class="chip chip-sun">CASE STUDY 03 — SOLAR ENERGY · CLIENT WORK</span>
-          <h2 class="sx-title reveal">SUPRAMAX<br><span class="sx-sun">ENERGY</span></h2>
-        </div>
-        <div class="sx-intro reveal">
-          <img src="./assets/images/supramax/logo.webp" alt="Supramax Energy logo">
-          <p>Supramax Energy is a Tunisian photovoltaic installer. I'm the lead contributor on both of its products: the public website that brings in clients, and an internal AI platform that turns a solar installation into a STEG-compliant technical dossier in minutes.</p>
-        </div>
-      </div>
-
-      <div class="sx-strip" aria-hidden="true">
-        <img src="./assets/images/supramax/roof-1.webp" alt="" loading="lazy">
-        <img src="./assets/images/supramax/roof-2.webp" alt="" loading="lazy">
-        <img src="./assets/images/supramax/inverter.webp" alt="" loading="lazy">
-        <img src="./assets/images/supramax/roof-3.webp" alt="" loading="lazy">
-      </div>
-
-      <div class="sx-grid">
-        <article class="sx-card reveal">
-          <div class="sx-shot"><img src="./assets/images/supramax/roof-1.webp" alt="Supramax rooftop installation" loading="lazy"><span class="sx-badge"><span class="dot-live"></span> LIVE · SUPRAMAXENERGY.TN</span></div>
-          <div class="sx-body">
-            <small>01 — PUBLIC WEBSITE · 29 COMMITS, TOP CONTRIBUTOR</small>
-            <h3>supramaxenergy.tn</h3>
-            <p>A trilingual (FR / EN / AR) React 19 site for residential, commercial and industrial solar. I built the server proxy that routes the contact form and the <b>“Chamouss” AI chatbot</b> (Gemini) through serverless functions, added fail-over timeouts so the bot stays fast, and set up server-side reCAPTCHA plus a client-side Web3Forms fallback. I also added the 93 kWp and 103 kWp projects to the gallery and handled the deployment.</p>
-            <div class="chips"><span>React 19</span><span>Vite</span><span>React Router</span><span>Leaflet map picker</span><span>Gemini chatbot</span><span>Netlify Functions</span><span>reCAPTCHA</span><span>i18n FR/EN/AR</span></div>
-            <div class="sx-links"><a class="btn-black" href="https://supramaxenergy.tn" target="_blank" rel="noopener">VISIT SITE ↗</a><a class="btn-line" href="https://github.com/supramaxorganistation/reactsupramaxsite" target="_blank" rel="noopener">CODE</a></div>
-          </div>
-        </article>
-
-        <article class="sx-card reveal">
-          <div class="sx-shot dark"><img src="./assets/images/supramax/dossier-deck.webp" alt="Supramax dossier platform presentation" loading="lazy"><span class="sx-badge">AI · STEG COMPLIANCE</span></div>
-          <div class="sx-body">
-            <small>02 — DOSSIER TECHNIQUE AI · 26 OF 30 COMMITS</small>
-            <h3>STEG dossiers in minutes</h3>
-            <p>A full-stack platform that generates the official <b>21-page STEG technical dossier</b> for a grid-connected PV installation. It handles sizing, NF C 15-100 checks and a ready-to-submit PDF with annexes and GPS data. I built an <b>AI datasheet scanner</b> that pulls panel, inverter, protection and cable specs out of PDFs. I also built a function-calling <b>dossier agent</b> (Qwen3-8B) that reads and edits the dossier, runs compliance and writes the French narrative text, falling back to a rule-based checklist when the AI is unavailable. On top of that I added ERP modules and an Expo mobile client.</p>
-            <div class="chips"><span>React + TS</span><span>Recharts</span><span>Node / Express</span><span>MongoDB</span><span>LLM agent · tool calling</span><span>PDF / DOCX generation</span><span>Expo · React Native</span></div>
-            <div class="sx-links"><button class="btn-black" data-open="supramax-dossier">OPEN CASE →</button><a class="btn-line" href="https://github.com/supramaxorganistation/supramaxenergydossiertechniqueai" target="_blank" rel="noopener">CODE</a></div>
-          </div>
-        </article>
-      </div>
-
-      <div class="sx-stats">
-        <div class="reveal"><b>0,93</b><small>target inverter / PV ratio</small></div>
-        <div class="reveal"><b>100 %</b><small>STEG checks automated</small></div>
-        <div class="reveal"><b>21 p.</b><small>official dossier generated</small></div>
-        <div class="reveal"><b>3</b><small>languages on the public site</small></div>
-      </div>
-    </div>
   </section>
 
   <!-- ============ WORKS WHEEL ============ -->
