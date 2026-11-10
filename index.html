@@ -1,360 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./assets/images/img-2.png" type="image/x-icon">
-    <title>My Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yassin Wesslati — Engineering Student & Developer</title>
+  <meta name="description" content="Portfolio of Yassin Wesslati — engineering student and freelance developer. Award-winning game dev, IoT systems and web.">
+  <link rel="shortcut icon" href="./assets/images/img-2.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="is-loading">
 
-<body>
-    <!-- Header -->
-   
-    <section id="header">
-        <div class="header container">
-            <div class="nav-bar">
-                <div class="brand">
-                    <a href="#hero">
-                        <h1><span>Y</span>assin <span>W</span>esslati</h1>
-                    </a>
-                </div>
-                <div class="nav-list">
-                    <div class="hamburger">
-                        <div class="bar"></div>
-                    </div>
-                    <ul>
-                        <li><a href="#hero" data-after="Home">Home</a></li>
-                        <li><a href="#services" data-after="Service">Services</a></li>
-                        <li><a href="#projects" data-after="Projects">Projects</a></li>
-                        <li><a href="#about" data-after="About">About</a></li>
-                        <li><a href="#contact" data-after="Contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+  <!-- Preloader -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-orbit"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="loader-name">WESSLATI</div>
+    <div class="loader-count"><span id="loader-num">0</span>%</div>
+  </div>
 
+  <!-- Cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-    <!-- Hero Section  -->
+  <!-- Scroll progress -->
+  <div id="progress" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header id="nav">
+    <a href="#hero" class="brand">Y<em>.</em>W</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Journey</a>
+      <a href="#works">Works</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta magnetic">Let's talk <span class="dot-live"></span></a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <div id="drawer">
+    <a href="#about">About</a><a href="#experience">Journey</a><a href="#works">Works</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <!-- Hero -->
     <section id="hero">
-        <div class="hero container">
-            <div>
-                <h1>Hello, <span></span></h1>
-                <h1>My Name is <span></span></h1>
-                <h1>Yassine wesslati <span></span></h1>
-                <a href="#projects" type="button" class="cta">Portfolio</a>
-            </div>
+      <div class="hero-meta reveal">
+        <span>Engineering Student</span><span class="sep">●</span><span>Freelance Developer</span><span class="sep">●</span><span>Tunisia</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="line"><span class="split">YASSIN</span></span>
+        <span class="line"><span class="split metallic">WESSLATI</span></span>
+      </h1>
+      <div class="hero-portrait">
+        <img src="./assets/images/madaradouphoto.png" alt="Portrait of Yassin Wesslati">
+      </div>
+      <div class="hero-bottom">
+        <p class="hero-lede reveal">I build things you can <em>play</em>, <em>plug in</em> and <em>scroll</em> — from award-winning games in C to IoT platforms in Qt and the web.</p>
+        <div class="hero-actions reveal">
+          <a href="#works" class="btn btn-dark magnetic">See works <span>↓</span></a>
+          <a href="./assets/my-cv.pdf" download class="btn btn-line magnetic">Resume</a>
         </div>
+        <div class="hero-badge reveal">
+          <span class="badge-num">01</span>
+          <span>Game Day 2024<br><b>Winner</b></span>
+        </div>
+      </div>
     </section>
-    <!-- End Hero Section  -->
 
-    <!-- Service Section -->
-    <section id="services">
-        <div class="services container">
-            <div class="service-top">
-                <h1 class="section-title">Serv<span>i</span>ces</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum deleniti maiores pariatur assumenda
-                    quas
-                    magni et, doloribus quod voluptate quasi molestiae magnam officiis dolorum, dolor provident atque
-                    molestias
-                    voluptatum explicabo!</p>
-            </div>
-            <div class="service-bottom">
-                <div class="service-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" /></div>
-                    <h2>Web Design</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis debitis rerum, magni voluptatem
-                        sed
-                        architecto placeat beatae tenetur officia quod</p>
-                </div>
-                <div class="service-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" /></div>
-                    <h2>Web Design</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis debitis rerum, magni voluptatem
-                        sed
-                        architecto placeat beatae tenetur officia quod</p>
-                </div>
-                <div class="service-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" /></div>
-                    <h2>Web Design</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis debitis rerum, magni voluptatem
-                        sed
-                        architecto placeat beatae tenetur officia quod</p>
-                </div>
-                <div class="service-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" /></div>
-                    <h2>Web Design</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis debitis rerum, magni voluptatem
-                        sed
-                        architecto placeat beatae tenetur officia quod</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Service Section -->
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="projects container">
-            <div class="projects-header">
-                <h1 class="section-title">Recent <span>Projects</span></h1>
-            </div>
-            <div class="all-projects">
-                <div class="project-item" id="rebirth-project" onclick="openModal('rebirthModal')" style="cursor:pointer;">
-                    <div class="project-info">
-                        <h1>Rebirth to the World</h1>
-                        <h2>Award-Winning 2D Platformer</h2>
-                        <p>An award-winning 2D side-scrolling platformer game developed in C with SDL. Winner of Game Day 2024 and celebrated at Esprit's Digital Knights. Features multi-level adventure, dynamic combat, interactive storytelling, and Arduino controller support.</p>
-                    </div>
-                    <div class="project-img">
-                        <img src="./assets/images/rebirthed/rebirth_logo.png" alt="Rebirth to the World Logo" style="object-fit:contain; background:#222; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); padding:0.5rem;">
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-item" id="clansy-project" onclick="openModal('clansyModal')" style="cursor:pointer;">
-                        <div class="project-info">
-                            <h1>Clansy</h1>
-                            <h2>Smart Cleaning Management</h2>
-                            <p>Digital transformation of cleaning companies via IoT to automate task management, improve coordination with teams and clients, personalize services, and optimize operational efficiency with a sustainable approach. Built with Qt and C++ for robust desktop and IoT integration.</p>
-                        </div>
-                        <div class="project-img">
-                            <img src="./assets/images/cleansy/logo.png" alt="Clansy Logo" style="object-fit:contain; background:#222; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); padding:0.5rem;">
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-info">
-                        <h1>Portfolio Website</h1>
-                        <h2>Showcase Your Work</h2>
-                        <p>A beautifully designed personal portfolio website with animations, project highlights, and a contact form. Built using HTML, CSS, and JavaScript to create an eye-catching presentation.</p>
-                    </div>
-                    <div class="project-img">
-                        <img src="./assets/images/Portfolio-Website.webp" alt="Portfolio Website">
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-info">
-                        <h1>Task Manager App</h1>
-                        <h2>Boost Productivity</h2>
-                        <p>A to-do list and task management app featuring drag-and-drop functionality, priority sorting, and local storage. Created using Vue.js for a modern, fast, and responsive experience.</p>
-                    </div>
-                    <div class="project-img">
-                        <img src="./assets/images/task-managment.webp" alt="Task Manager App">
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-info">
-                        <h1>Weather Forecast App</h1>
-                        <h2>Real-Time Weather Updates</h2>
-                        <p>A weather app that provides real-time updates, temperature details, and forecasts based on user location. Developed with JavaScript and OpenWeather API for accurate results.</p>
-                    </div>
-                    <div class="project-img">
-                        <img src="./assets/images/Weather-Forecast-App.webp" alt="Weather Forecast App">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- End Projects Section -->
-
-    <!-- Clansy Modal -->
-    <div id="clansyModal" class="modal">
-      <div class="modal-content modern-modal">
-        <span class="close" onclick="closeModal('clansyModal')">&times;</span>
-        <div class="modal-header" style="display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
-          <img src="./assets/images/cleansy/logo.png" alt="Clansy Logo" style="max-width:110px; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); background:#fff; padding:0.5rem; margin-bottom:0.5rem;">
-          <h2 style="text-align:center; font-size:2.1rem; font-weight:700; letter-spacing:0.02em; margin:0;">Clansy</h2>
-          <p style="text-align:center; color:#f7c873; font-weight:700; font-size:1.1rem; margin:0;">Smart Cleaning Management Platform</p>
-        </div>
-        <div class="modal-body" style="margin-top:1.2rem;">
-          <p style="margin-bottom:1.2rem; font-size:1.08rem; line-height:1.7; color:#e0e0e0;">
-            <span style="display:block; font-size:1.13rem; color:#fff; font-weight:600; margin-bottom:0.3rem;">Project Overview</span>
-            Digital transformation of cleaning companies through IoT to automate task management, improve coordination with teams and clients, personalize services, and optimize operational efficiency while adopting a sustainable approach. Clansy leverages Qt and C++ for a robust desktop experience, IoT integration, and advanced analytics.
-          </p>
-          <div style="margin-bottom:1.2rem;">
-            <span style="display:block; font-size:1.08rem; color:#f7c873; font-weight:600; margin-bottom:0.2rem;">Event Poster</span>
-            <img src="./assets/images/cleansy/poster.png" alt="Clansy Poster" style="width:100%; border-radius:1.1rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); margin-bottom:0.5rem;">
-          </div>
-          <h3 style="margin-bottom:0.5rem; color:#fff; font-size:1.1rem;">Skills & Technologies</h3>
-          <div class="skills-grid">
-            <span>Qt Framework</span>
-            <span>C++</span>
-            <span>Arduino</span>
-            <span>SQL</span>
-            <span>RFID</span>
-            <span>QML</span>
-            <span>Charts & Analytics</span>
-            <span>QR Code/Barcode</span>
-            <span>Mapping Services</span>
-            <span>Serial Communication</span>
-            <span>PDF/Excel Export</span>
-            <span>Email/SMS</span>
-            <span>Fleet Management</span>
-            <span>IoT Integration</span>
-          </div>
-          <div style="margin-top:1.5rem; text-align:center;">
-            <a href="https://github.com/madaradou/hoteliasmartweb" target="_blank" rel="noopener" style="display:inline-block; background:#f7c873; color:#181818; font-weight:600; padding:0.7em 1.6em; border-radius:8px; text-decoration:none; font-size:1.08rem; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;">View on GitHub</a>
-          </div>
-        </div>
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>C / SDL</span><i>✦</i><span>Qt & C++</span><i>✦</i><span>Arduino</span><i>✦</i><span>IoT</span><i>✦</i><span>JavaScript</span><i>✦</i><span>Vue.js</span><i>✦</i><span>SQL</span><i>✦</i><span>Game Design</span><i>✦</i>
+        <span>C / SDL</span><i>✦</i><span>Qt & C++</span><i>✦</i><span>Arduino</span><i>✦</i><span>IoT</span><i>✦</i><span>JavaScript</span><i>✦</i><span>Vue.js</span><i>✦</i><span>SQL</span><i>✦</i><span>Game Design</span><i>✦</i>
       </div>
     </div>
 
-    <!-- Rebirth Modal -->
-    <div id="rebirthModal" class="modal">
-      <div class="modal-content modern-modal">
-        <span class="close" onclick="closeModal('rebirthModal')">&times;</span>
-        <div class="modal-header" style="display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
-          <img src="./assets/images/rebirthed/rebirth_logo.png" alt="Rebirth to the World Logo" style="max-width:110px; border-radius:1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); background:#fff; padding:0.5rem; margin-bottom:0.5rem;">
-          <h2 style="text-align:center; font-size:2.1rem; font-weight:700; letter-spacing:0.02em; margin:0;">Rebirth to the World</h2>
-          <p style="text-align:center; color:#f7c873; font-weight:700; font-size:1.1rem; margin:0;">Award-Winning Game Day 2024 &bull; Digital Knights Reveal</p>
-        </div>
-        <div class="modal-body" style="margin-top:1.2rem;">
-          <p style="margin-bottom:1.2rem; font-size:1.08rem; line-height:1.7; color:#e0e0e0;">
-            <span style="display:block; font-size:1.13rem; color:#fff; font-weight:600; margin-bottom:0.3rem;">Game Overview</span>
-            Rebirth to the World is a visually stunning 2D side-scrolling platformer game developed in C using SDL. The game won top honors at Game Day 2024 and was featured at Esprit's Digital Knights event. Dive into a multi-level adventure with dynamic combat, interactive storytelling, puzzle integration, and Arduino controller support. Experience a unique blend of classic platforming and modern gameplay mechanics, all wrapped in a captivating medieval fantasy world.
-          </p>
-          <div style="margin-bottom:1.2rem;">
-            <span style="display:block; font-size:1.08rem; color:#f7c873; font-weight:600; margin-bottom:0.2rem;">Event Poster</span>
-            <img src="./assets/images/rebirthed/rebirth_posterr.png" alt="Rebirth to the World Poster" style="width:100%; border-radius:1.1rem; box-shadow:0 2px 16px rgba(0,0,0,0.18); margin-bottom:0.5rem;">
-          </div>
-          <h3 style="margin-bottom:0.5rem; color:#fff; font-size:1.1rem;">Skills & Technologies</h3>
-          <div class="skills-grid">
-            <span>C Language</span>
-            <span>SDL Framework</span>
-            <span>Game Development</span>
-            <span>Graphics Programming</span>
-            <span>2D Animation</span>
-            <span>Physics Engine</span>
-            <span>Audio Programming</span>
-            <span>Arduino Integration</span>
-            <span>Collision Detection</span>
-            <span>Level Design</span>
-            <span>Character Animation</span>
-            <span>Combat System</span>
-            <span>Save System</span>
-            <span>Minimap System</span>
-          </div>
-          <h3 style="margin-top:1.5rem; color:#fff; font-size:1.1rem;">Project Demo</h3>
-          <div class="video-container">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/G5VGV8nTPTQ" title="Rebirth to the World Trailer" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div style="margin-top:1.5rem; text-align:center;">
-            <a href="https://github.com/madaradou/rebirthed" target="_blank" rel="noopener" style="display:inline-block; background:#f7c873; color:#181818; font-weight:600; padding:0.7em 1.6em; border-radius:8px; text-decoration:none; font-size:1.08rem; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;">View on GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- About Section -->
+    <!-- About: scroll-expand media -->
     <section id="about">
-        <div class="about container">
-            <div class="col-left">
-                <div class="about-img">
-                    <img src="./assets/images/madaradouphoto.png" alt="img">
-                </div>
-            </div>
-            <div class="col-right">
-                <h1 class="section-title">About <span>me</span></h1>
-                <h2>Engineering Student | Freelance Developer</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, velit alias eius non illum
-                    beatae atque
-                    repellat ratione qui veritatis repudiandae adipisci maiores. At inventore necessitatibus deserunt
-                    exercitationem cumque earum omnis ipsum rem accusantium quis, quas quia, accusamus provident
-                    suscipit magni!
-                    Expedita sint ad dolore, commodi labore nihil velit earum ducimus nulla quae nostrum fugit aut,
-                    deserunt
-                    reprehenderit libero enim!</p>
-                <a href="./assets/my-cv.pdf" download class="cta">Download Resume</a>
-            </div>
+      <div class="sem">
+      <div class="sem-sticky">
+        <div class="sem-bg" style="background-image:url('./assets/images/hero-bg.jpg')"></div>
+        <div class="sem-media">
+          <img src="./assets/images/rebirthed/rebirth_posterr.png" alt="Rebirth to the World poster">
         </div>
+        <div class="sem-titles">
+          <h2 class="sem-left">Build</h2>
+          <h2 class="sem-right">& Play</h2>
+        </div>
+        <p class="sem-hint">Scroll to expand ↓</p>
+      </div>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow reveal">(01) — About</p>
+        <p class="about-big reveal">I'm an <b>engineering student</b> and <b>freelance developer</b> who likes the space where software meets hardware. My team's 2D platformer <em>Rebirth to the World</em> took first place at <b>Game Day 2024</b>, and I've shipped IoT-connected desktop systems in Qt.</p>
+        <div class="stats">
+          <div class="stat reveal"><span class="count" data-to="5">0</span><small>Projects shipped</small></div>
+          <div class="stat reveal"><span class="count" data-to="1">0</span><small>Award won</small></div>
+          <div class="stat reveal"><span class="count" data-to="14">0</span><small>Tools in a single project</small></div>
+        </div>
+      </div>
     </section>
-    <!-- End About Section -->
 
-    <!-- Contact Section -->
+    <!-- Experience: horizontal scroll -->
+    <section id="experience">
+      <div class="exp-sticky">
+        <div class="exp-head">
+          <p class="eyebrow">(02) — Journey</p>
+          <div class="exp-bar"><span></span></div>
+        </div>
+        <div class="exp-track">
+          <article class="exp-panel">
+            <span class="exp-year">NOW</span>
+            <h3>Engineering Student</h3>
+            <p>Studying engineering while building real products — games, embedded systems and web apps — and freelancing on the side.</p>
+            <ul><li>Software engineering</li><li>Embedded & IoT</li><li>Freelance web</li></ul>
+          </article>
+          <article class="exp-panel">
+            <span class="exp-year">2024</span>
+            <h3>Game Day — 1st Place</h3>
+            <p><em>Rebirth to the World</em>, a 2D side-scrolling platformer written in C with SDL, won top honors at Game Day 2024.</p>
+            <ul><li>C / SDL</li><li>Physics & collisions</li><li>Arduino controller</li></ul>
+          </article>
+          <article class="exp-panel">
+            <span class="exp-year">2024</span>
+            <h3>Digital Knights</h3>
+            <p>The game was revealed and celebrated at Esprit's Digital Knights event — combat, storytelling, puzzles, save system and minimap.</p>
+            <ul><li>Level design</li><li>Character animation</li><li>Audio programming</li></ul>
+          </article>
+          <article class="exp-panel">
+            <span class="exp-year">IOT</span>
+            <h3>Clansy Platform</h3>
+            <p>Digital transformation for cleaning companies: task automation, RFID, fleet management and analytics, built in Qt & C++.</p>
+            <ul><li>Qt / QML</li><li>RFID & serial</li><li>Charts & export</li></ul>
+          </article>
+          <article class="exp-panel exp-next">
+            <span class="exp-year">NEXT</span>
+            <h3>Your project?</h3>
+            <p>Open to internships and freelance work.</p>
+            <a href="#contact" class="btn btn-light magnetic">Get in touch →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works: 3D wheel -->
+    <section id="works">
+      <div class="works-head">
+        <p class="eyebrow reveal">(03) — Selected works</p>
+        <h2 class="section-title reveal">Spin the <em>reel</em></h2>
+        <p class="works-tip reveal">Drag, scroll or use ↑ ↓ — click a card to open</p>
+      </div>
+      <div class="wheel-wrap">
+        <div class="wheel" tabindex="0" aria-label="Projects wheel"></div>
+        <div class="wheel-info">
+          <span class="wheel-idx">01 / 05</span>
+          <h3 class="wheel-title"></h3>
+          <p class="wheel-sub"></p>
+          <button class="btn btn-dark magnetic wheel-open">Open project →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section id="stack">
+      <p class="eyebrow reveal">(04) — Stack</p>
+      <h2 class="section-title reveal">Tools I <em>reach for</em></h2>
+      <div class="stack-grid">
+        <div class="stack-card reveal"><h4>Languages</h4><p>C · C++ · JavaScript · SQL</p></div>
+        <div class="stack-card reveal"><h4>Frameworks</h4><p>SDL · Qt / QML · Vue.js</p></div>
+        <div class="stack-card reveal"><h4>Hardware</h4><p>Arduino · RFID · Serial comms</p></div>
+        <div class="stack-card reveal"><h4>Craft</h4><p>Game & level design · 2D animation · UI</p></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
-        <div class="contact container">
-            <div>
-                <h1 class="section-title">Contact <span>info</span></h1>
-            </div>
-            <div class="contact-items">
-                <div class="contact-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
-                    <div class="contact-info">
-                        <h1>Phone</h1>
-                        <h2>+1 234 123 1234</h2>
-                        <h2>+1 234 123 1234</h2>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
-                    <div class="contact-info">
-                        <h1>Email</h1>
-                        <h2>info@gmail.com</h2>
-                        <h2>abcd@gmail.com</h2>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
-                    <div class="contact-info">
-                        <h1>Address</h1>
-                        <h2>Fatikchhari, Chittagong, Bangladesh</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <p class="eyebrow reveal">(05) — Contact</p>
+      <h2 class="contact-big reveal">Have an idea?<br><em>Let's build it.</em></h2>
+      <div class="contact-links">
+        <a class="contact-row magnetic" href="https://github.com/madaradou" target="_blank" rel="noopener"><span>GitHub</span><span>@madaradou ↗</span></a>
+        <a class="contact-row magnetic" href="./assets/my-cv.pdf" download><span>Resume</span><span>Download PDF ↓</span></a>
+        <!-- TODO: add your real email / LinkedIn here -->
+      </div>
     </section>
-    <!-- End Contact Section -->
+  </main>
 
-    <!-- Footer -->
-    <section id="footer">
-        <div class="footer container">
-            <div class="brand">
-                <h1><span>M</span>ehtab <span>A</span>lam</h1>
-            </div>
-            <h2>Your Complete Web Solution</h2>
-            <div class="social-icon">
-                <div class="social-item">
-                    <a href="#"><img src="./assets/icons/linkedin.png" /></a>
-                </div>
-                <div class="social-item">
-                    <a href="#"><img src="./assets/icons/github.png" /></a>
-                </div>
-                <div class="social-item">
-                    <a href="#"><img src="./assets/icons/twitter.png" /></a>
-                </div>
-                <div class="social-item">
-                    <a href="#"><img src="./assets/icons/youtube.png" /></a>
-                </div>
-            </div>
-            <p>Copyright © 2020 Mehtab. All rights reserved</p>
-        </div>
-    </section>
-    <!-- End Footer -->
-    <script src="./index.js"></script>
-    <script>
-      // Modal logic
-      function openModal(id) {
-        document.getElementById(id).style.display = 'block';
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal(id) {
-        document.getElementById(id).style.display = 'none';
-        document.body.style.overflow = '';
-      }
-      // Close modal on outside click
-      window.onclick = function(event) {
-        var modal = document.getElementById('rebirthModal');
-        if (event.target == modal) {
-          closeModal('rebirthModal');
-        }
-      }
-    </script>
-    <script src="lightdarkmood.js"></script>
+  <footer id="footer">
+    <div class="footer-name">WESSLATI</div>
+    <div class="footer-row">
+      <span>© <span id="year"></span> Yassin Wesslati</span>
+      <a href="#hero">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Project modal -->
+  <div id="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="./index.js"></script>
 </body>
-
 </html>
